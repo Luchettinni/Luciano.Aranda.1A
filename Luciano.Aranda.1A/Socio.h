@@ -221,6 +221,6 @@ void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], in
 void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamo prest[], int tam3);
 void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, sPrestamo prest[], int tam3);
 void listarLibrosPorFechaDeterminada(sLibros lib[], int tam3, sPrestamo prest[], int tam2);
-void socioMenosPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2);
+void socioMasPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2);
 void listarLibrosAscendente(sLibros lib[], int tam_libros);
 void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamo prest[], int tam2);

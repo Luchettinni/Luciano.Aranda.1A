@@ -678,10 +678,10 @@ void promedioNoSuperado (sPrestamo prest[], int tam_prestamos)
     printf("los dias que no superan al prestamo son: %d", contadorDias);
 }
 
-void socioMenosPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2)
+void socioMasPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2)
 {
 
-    int min = 0;
+    int max = 0;
     int contador;
     int flag = 0;
 
@@ -698,12 +698,12 @@ void socioMenosPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2)
 
         if ( flag == 0 && contador != 0) // con esto seteo un minimo a la primer cantidad de libros que le llegue
         {
-            min = contador;
+            max = contador;
             flag = 1;
         }
-        else if ( contador <= min && contador != 0)
+        else if ( contador >= max && contador != 0)
         {
-            min = contador;
+            max = contador;
         }
 
     }
@@ -719,7 +719,7 @@ void socioMenosPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2)
                 contador++;
             }
         }
-        if (contador == min)
+        if (contador == max)
         {
             printf("%-16d  %-15s  %-15s  %-15d\n", soc[i].codigoDeSocio, soc[i].nombre, soc[i].apellido, prest[i].codigoLibro);
         }

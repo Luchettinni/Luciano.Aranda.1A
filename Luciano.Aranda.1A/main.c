@@ -181,7 +181,7 @@ int main()
                             break;
 
                         case 6:
-                            socioMenosPrestamos(socios,TAM_SOCIOS,prestamo,TAM_PRESTAMOS);
+                            socioMasPrestamos(socios,TAM_SOCIOS,prestamo,TAM_PRESTAMOS);
                             system("pause");
                             break;
 
@@ -209,10 +209,10 @@ int main()
                             confirma3 = 7;
                             break;
 
-                        /*case 12:
+                        case 12:
                             ListarPrestamos(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
                             system("pause");
-                            break;*/
+                            break;
 
                         default:
                             printf("\nEl comando ingresado es desconocido...\n\n");
