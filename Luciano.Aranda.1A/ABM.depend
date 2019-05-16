@@ -1,0 +1,216 @@
+# depslib dependency file v1.0
+1557263097 source:c:\users\apyr\desktop\abm generico\abm\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Empleado.h"
+	"Input.h"
+
+1557261739 c:\users\apyr\desktop\abm generico\abm\empleado.h
+
+1557258867 c:\users\apyr\desktop\abm generico\abm\input.h
+
+1557150958 source:c:\users\apyr\desktop\abm generico\abm\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Input.h"
+
+1557292617 source:c:\users\apyr\desktop\abm generico\abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Socio.h"
+	"Prestamos.h"
+	"autores.h"
+	"Input.h"
+
+1557150957 source:d:\abm generico\abm\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Input.h"
+
+1556397882 d:\abm generico\abm\input.h
+
+1557154177 source:d:\abm generico\abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Empleado.h"
+	"Input.h"
+
+1557153870 d:\abm generico\abm\empleado.h
+
+1557154122 source:d:\abm generico\abm\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Empleado.h"
+	"Input.h"
+
+1557293021 c:\users\apyr\desktop\abm generico\abm\socio.h
+
+1557291326 source:c:\users\apyr\desktop\abm generico\abm\socio.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Socio.h"
+	"Input.h"
+
+1557291620 source:c:\users\apyr\desktop\abm generico\abm\prestamos.c
+	<stdio.h>
+	<stdlib.h>
+	"Socio.h"
+	"Prestamos.h"
+	"Input.h"
+
+1557288574 c:\users\apyr\desktop\abm generico\abm\prestamos.h
+	"Socio.h"
+
+1557288901 c:\users\apyr\desktop\abm generico\abm\autores.h
+
+1557290855 source:c:\users\apyr\desktop\abm generico\abm\autores.c
+	<stdio.h>
+	<stdlib.h>
+	"Socio.h"
+
+1557327213 source:d:\abm generico2\abm\autores.c
+	<stdio.h>
+	<stdlib.h>
+	"Socio.h"
+
+1557327651 d:\abm generico2\abm\socio.h
+
+1557150958 source:d:\abm generico2\abm\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Input.h"
+
+1557258868 d:\abm generico2\abm\input.h
+
+1557327743 source:d:\abm generico2\abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Socio.h"
+	"Prestamos.h"
+	"Input.h"
+
+1557288576 d:\abm generico2\abm\prestamos.h
+	"Socio.h"
+
+1557288902 d:\abm generico2\abm\autores.h
+
+1557316207 source:d:\abm generico2\abm\prestamos.c
+	<stdio.h>
+	<stdlib.h>
+	"Socio.h"
+	"Prestamos.h"
+	"Input.h"
+
+1557327651 source:d:\abm generico2\abm\socio.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Socio.h"
+	"Input.h"
+
+1557150958 source:c:\users\alumno\desktop\abm\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Input.h"
+
+1557258868 c:\users\alumno\desktop\abm\input.h
+
+1557327787 source:c:\users\alumno\desktop\abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Socio.h"
+	"Prestamos.h"
+	"Input.h"
+
+1557327651 c:\users\alumno\desktop\abm\socio.h
+
+1557288576 c:\users\alumno\desktop\abm\prestamos.h
+	"Socio.h"
+
+1557316207 source:c:\users\alumno\desktop\abm\prestamos.c
+	<stdio.h>
+	<stdlib.h>
+	"Socio.h"
+	"Prestamos.h"
+	"Input.h"
+
+1557327651 source:c:\users\alumno\desktop\abm\socio.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Socio.h"
+	"Input.h"
+
+1557150958 source:c:\users\apyr\desktop\luciano.aranda.1a\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Input.h"
+
+1557258868 c:\users\apyr\desktop\luciano.aranda.1a\input.h
+
+1557963231 source:c:\users\apyr\desktop\luciano.aranda.1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Socio.h"
+	"Prestamos.h"
+	"Input.h"
+
+1557963231 c:\users\apyr\desktop\luciano.aranda.1a\socio.h
+
+1557288576 c:\users\apyr\desktop\luciano.aranda.1a\prestamos.h
+	"Socio.h"
+
+1557949321 source:c:\users\apyr\desktop\luciano.aranda.1a\prestamos.c
+	<stdio.h>
+	<stdlib.h>
+	"Socio.h"
+	"Prestamos.h"
+	"Input.h"
+
+1557963352 source:c:\users\apyr\desktop\luciano.aranda.1a\socio.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Socio.h"
+	"Input.h"
+
