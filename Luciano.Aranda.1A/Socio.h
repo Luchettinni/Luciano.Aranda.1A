@@ -214,8 +214,10 @@ void listarAutores(sAutores aut[], int tam);
  * \return
  *
  */
-void informarTotalYProm (sPrestamo prest[], int tam);
-void promedioNoSuperado (sPrestamo prest[], int tam_prestamos);
+
+void obtenerPrestTotalYDiario(sPrestamo prest[], int tam, float* contadorDePrestamos, int* contadorDias);
+void prestamosTotalesyDiarios (sPrestamo prest[], int tam);
+void promedioNoSuperado (sPrestamo prest[], int tam);
 void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4);
 void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4, int* ultimoCodigo);
 void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamo prest[], int tam3);

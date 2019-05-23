@@ -36,13 +36,11 @@ int main()
     sAutores autor[TAM_AUTORES];
     sLibros libros[TAM_LIBROS];
     sPrestamo prestamo[TAM_PRESTAMOS] = {
-    {1,1,2,1, {8,5,2019} },
-    {2,2,2,1, {8,5,2019} },
-    {3,2,6,1, {8,5,2019} },
-    {4,1,6,1, {8,5,2019} },
-    {4,1,6,1, {8,5,2019} },
-    {5,2,2,1, {8,5,2019} }
-    };
+    {1,1,2,1, {8,6,2019} },
+    {2,2,2,1, {8,7,2019} },
+    {3,2,6,1, {7,5,2019} },
+    {5,2,2,1, {7,5,2019} }
+    };// dale, DALE, PONETE A HARDCODEAR, NUNCA VAS A ROMPER MI ABM *Risa de villano generica* (?
 
     char confirma;
     int confirma2;
@@ -156,7 +154,7 @@ int main()
                     switch(menuDeListado())
                     {
                         case 1:
-                            informarTotalYProm(prestamo,TAM_PRESTAMOS);
+                            prestamosTotalesyDiarios (prestamo,TAM_PRESTAMOS);
                             system("pause");
                             break;
 

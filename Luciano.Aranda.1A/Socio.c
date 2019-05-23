@@ -445,34 +445,76 @@ void listarAutores(sAutores aut[], int tam)
 
 //-------------------------------------------------------------------------
 
-void informarTotalYProm (sPrestamo prest[], int tam)
+void obtenerPrestTotalYDiario(sPrestamo prest[], int tam, float* contadorDePrestamos, int* contadorDias)
 {
     int contador;
-    int contadorDias = 0;
-    float promedio = 0;
-
-    for (int i = 0; i < 31; i++) // recorro los dias de un mes
+    for (int i = 0; i < 12; i++) // recorro todos los meses de un año
     {
-        contador = 0;
-        for (int j = 0; j < tam; j++) // recorro los prestamos
+        for (int j = 0; j < 31; j++) // recorro los 31 dias de un mes
         {
-           if (prest[j].fecha.dia == i+1 && prest[j].isEmpty == 1 )
+            contador = 0;
+            for (int k = 0; k < tam; k++) // recorro los prestamos
             {
-                contador++;
+                if (prest[k].fecha.dia == j+1 && prest[k].fecha.mes == i+1 && prest[k].isEmpty == 1 )
+                {
+                    contador++;
+                }
+            }
+            if (contador != 0)
+            {
+                *contadorDias = *contadorDias + 1;
+            }
+
+            *contadorDePrestamos = *contadorDePrestamos + contador;
+        }
+    }
+}
+
+void prestamosTotalesyDiarios (sPrestamo prest[], int tam)
+{
+    float promedio = 0;
+    int contadorDeDias = 0;
+
+    obtenerPrestTotalYDiario(prest,tam,&promedio,&contadorDeDias);
+
+    printf("Prestamos totales = %.f \n", promedio);
+    promedio = promedio / contadorDeDias;
+    printf("Promedio diario = %.2f \n", promedio);
+}
+
+void promedioNoSuperado (sPrestamo prest[], int tam)
+{
+    int contador = 0;
+    float promedio = 0;
+    int contadorDias = 0;
+
+    obtenerPrestTotalYDiario(prest,tam,&promedio,&contadorDias);
+    promedio = promedio / contadorDias;
+    printf("(promedio diario: %.2f...)\n", promedio);
+    contadorDias = 0;
+
+    for (int i = 0; i < 12; i++) // recorro todos los meses de un año
+    {
+
+        for (int j = 0; j < 31; j++) // recorro los dias de un mes
+        {
+            contador = 0;
+            for (int k = 0; k < tam; k++) // recorro los prestamos
+            {
+                if (prest[k].fecha.dia == j+1 && prest[k].fecha.mes == i+1 && prest[k].isEmpty == 1 )
+                {
+                    contador++;
+                }
+            }
+
+            if (contador != 0 && contador < promedio)
+            {
+                contadorDias++;
             }
         }
-
-        if (contador != 0)
-        {
-            contadorDias++;
-        }
-
-        promedio = promedio + contador;
     }
 
-    printf("\ntotal general = %.f\n", promedio);
-    promedio = promedio / contadorDias;
-    printf("promedio diario = %.2f\n\n", promedio);
+    printf("los dias que no superan al prestamo son: %d \n\n", contadorDias);
 }
 
 void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4)
@@ -649,33 +691,6 @@ void listarLibrosAscendente(sLibros lib[], int tam_libros)
     }
 
     listarLibros(lib,tam_libros);
-}
-
-void promedioNoSuperado (sPrestamo prest[], int tam_prestamos)
-{
-    int contador;
-    int contadorDias = 0;
-    float promedio = 0;
-
-    for (int i = 0; i < 31; i++) // recorro los dias de un mes
-    {
-        promedio = 3.50; // este numero es hardcodeo, pero deberia venir de la funcion que saca pormedios diarios
-        contador = 0;
-        for (int j = 0; j < tam_prestamos; j++) // recorro los prestamos
-        {
-           if (prest[j].fecha.dia == i+1 && prest[j].isEmpty == 1 )
-            {
-                contador++;
-            }
-        }
-
-        if (contador != 0 && contador < promedio)
-        {
-            contadorDias++;
-        }
-    }
-
-    printf("los dias que no superan al prestamo son: %d", contadorDias);
 }
 
 void socioMasPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2)

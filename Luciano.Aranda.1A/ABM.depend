@@ -230,12 +230,12 @@
 	"Prestamos.h"
 	"Input.h"
 
-1557974881 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\socio.h
+1558642847 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\socio.h
 
 1557974359 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\prestamos.h
 	"Socio.h"
 
-1557974881 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\socio.c
+1558644273 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\socio.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -244,7 +244,7 @@
 	"Socio.h"
 	"Input.h"
 
-1557974881 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\main.c
+1558644404 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
