@@ -4,12 +4,25 @@
 #include <ctype.h>
 #include <string.h>
 
+//---------------------------------------------
+
 #ifndef SOCIO_H_INCLUDED
 #define SOCIO_H_INCLUDED
 
 #include "Socio.h"
 
 #endif // SOCIO_H_INCLUDED
+
+//---------------------------------------------
+
+#ifndef LIBROS_H_INCLUDED
+#define LIBROS_H_INCLUDED
+
+#include "Libros.h"
+
+#endif // LIBROS_H_INCLUDED
+
+//---------------------------------------------
 
 #ifndef INPUT_H_INCLUDED
 #define INPUT_H_INCLUDED
@@ -18,39 +31,41 @@
 
 #endif // INPUT_H_INCLUDED
 
-void borrarBaseDeDatos(sSocios soc[], int tam, sPrestamo prest[], int tam2, sLibros lib[],int tam3, sAutores aut[], int tam4)
+//---------------------------------------------
+
+void inicializarEstructuras(sSocios soc[], int tam_Socios, sPrestamos prest[], int tam_Prestamos, sLibros lib[],int tam_Libros, sAutores aut[], int tam_Autores)
 {
-    for(int i=0; i< tam; i++)
+    for(int i=0; i< tam_Socios; i++)
     {
-        soc[i].isEmpty = 0;
+        soc[i].isEmpty = 1;
     }
 
-    /*for(int i=0; i< tam2; i++)
+    for(int i=0; i< tam_Prestamos; i++)
     {
-        prest[i].isEmpty = 0;
-    }*/
-
-    for(int i=0; i< tam3; i++)
-    {
-        lib[i].isEmpty = 0;
+        prest[i].isEmpty = 1;
     }
 
-    for(int i=0; i< tam4; i++)
+    for(int i=0; i< tam_Libros; i++)
     {
-        aut[i].isEmpty = 0;
+        lib[i].isEmpty = 1;
+    }
+
+    for(int i=0; i< tam_Autores; i++)
+    {
+        aut[i].isEmpty = 1;
     }
 
 }
 
-void inicializacionDeEstructuras(sSocios socios[], int tam, sAutores autores[], int tam2, sLibros libros[], int tam3)
+void hardcodeDeEstructuras(sSocios socios[], sAutores autores[], sLibros libros[], sPrestamos prest[])
 {
 
     sSocios sociosAux[] = {
-    {1,1, "luchito", "aranda", 'm', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} },
-    {1,2, "kevin", "ahumada", 'm', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} },
-    {1,3, "thomas", "alvarez", 'm', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} },
-    {1,4, "brenda", "frias", 'f', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} },
-    {1,5, "ubuwewewe", "osas", 'm', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} }
+    {0,1, "luchito", "aranda", 'm', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} },
+    {0,2, "kevin", "ahumada", 'm', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} },
+    {0,3, "thomas", "alvarez", 'm', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} },
+    {0,4, "brenda", "frias", 'f', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} },
+    {0,5, "ubuwewewe", "osas", 'm', "42115262", "LuchettinniDev@outlook.com", {2,2,2019} }
     };
 
     for (int i = 0; i < 5; i++)
@@ -59,10 +74,10 @@ void inicializacionDeEstructuras(sSocios socios[], int tam, sAutores autores[], 
     }
 
     sAutores autoresAux[] = {
-    {1,1, "Peter", "Ahumada"},
-    {1,2, "Thomas", "Alvarez"},
-    {1,3, "Ricardo", "Milos"},
-    {1,4, "Christian", "Bauss"}
+    {0,1, "Peter", "Ahumada"},
+    {0,2, "Thomas", "Alvarez"},
+    {0,3, "Ricardo", "Milos"},
+    {0,4, "Christian", "Bauss"}
     };
 
     for (int i = 0; i < 4; i++)
@@ -70,17 +85,29 @@ void inicializacionDeEstructuras(sSocios socios[], int tam, sAutores autores[], 
         autores[i] = autoresAux[i];
     }
     sLibros librosAux[] = {
-    { 1,1,1, "Peter y sus notas veganas"},
-    { 1,4,4, "Ricardo milanga: dota2"},
-    { 1,4,3, "Programacion en C para profesionales"},
-    { 1,3,5, "Los errores de C mas comunes"},
-    { 1,4,6, "AYUDA NO ME COMPILA, parte 1"},
-    { 1,3,2, "The work of a genius"}
+    { 0,1,1, "Peter y sus notas veganas"},
+    { 0,4,4, "Ricardo milanga: dota2"},
+    { 0,4,3, "Programacion en C para profesionales"},
+    { 0,3,5, "Los errores de C mas comunes"},
+    { 0,4,6, "AYUDA NO ME COMPILA, parte 1"},
+    { 0,3,2, "The work of a genius"}
     };
 
     for (int i = 0; i < 6; i++)
     {
         libros[i] = librosAux[i];
+    }
+
+    sPrestamos prestAux [] = {
+    {1,1,2,0, {8,6,2019} },
+    {2,2,2,0, {8,7,2019} },
+    {3,2,6,0, {7,5,2019} },
+    {5,2,2,0, {7,5,2019} }
+    };// dale, DALE, PONETE A HARDCODEAR, NUNCA VAS A ROMPER MI ABM *Risa de villano generica* (?
+
+    for (int i = 0; i < 4; i++)
+    {
+        prest[i] = prestAux[i];
     }
 }
 
@@ -160,16 +187,16 @@ int subMenuModificarSocio()
     return opcion;
 }
 
-void AltaSocio (sSocios soc[], int tam, int* UltimoCodigoDeSocio)
+void AltaSocio (sSocios soc[], int tam_Socios, int* UltimoCodigoDeSocio)
 {
-    int indice = buscarEspacioLibreSocios(soc, tam);
+    int indice = buscarEspacioLibreSocios(soc, tam_Socios);
     if (indice == -1)
     {
         printf("\n no hay mas espacio en el sistema :c");
     }
     else
     {
-        *UltimoCodigoDeSocio = buscarUltimoCodigoSocio(soc, tam, UltimoCodigoDeSocio);
+        *UltimoCodigoDeSocio = buscarUltimoCodigoIncremental(soc, tam_Socios, UltimoCodigoDeSocio);
         fflush(stdin);
         soc[indice].codigoDeSocio = *UltimoCodigoDeSocio;
 
@@ -189,13 +216,13 @@ void AltaSocio (sSocios soc[], int tam, int* UltimoCodigoDeSocio)
 
         getInt(&soc[indice].fecha.year, "Ingrese year de ingreso: ", "ERROR: debe ser un numero entre 2000 y 2019. ", 2000, 2019);
 
-        soc[indice].isEmpty = 1;
+        soc[indice].isEmpty = 0;
 
         printf("Alta empleado exitosa!!!\n\n");
     }
 }
 
-void bajaSocio (sSocios soc[], int tam)
+void bajaSocio (sSocios soc[], int tam_Socios)
 {
     int indice;
     char respuesta;
@@ -203,18 +230,18 @@ void bajaSocio (sSocios soc[], int tam)
     printf("Ingrese el legajo del empleado que desea dar de baja...: ");
     scanf("%d", &indice);
 
-    indice = buscarSocio(soc, tam, indice);
+    indice = buscarSocio(soc, tam_Socios, indice);
 
-    if ( soc[indice].isEmpty == 1)
+    if ( soc[indice].isEmpty == 0)
     {
         printf("\nel siguiente empleado se eliminara del sistema...\n");
         mostrarSocio(soc, indice);
 
-        getResp(&respuesta, "\n\nEliminar?: ");
+        getAnswer(&respuesta, "\n\nEliminar?: ");
 
         if (respuesta == 's')
         {
-            soc[indice].isEmpty = 0;
+            soc[indice].isEmpty = 1;
             printf("\n\nEl empleado se elimino correctamente\n\n");
         }
         else
@@ -231,14 +258,14 @@ void bajaSocio (sSocios soc[], int tam)
 
 }
 
-void modificarSocio(sSocios soc[], int tam)
+void modificarSocio(sSocios soc[], int tam_Socios)
 {
     int indice;
     char respuesta;
 
     printf("\ningrese el codigo del socio que desea modificar: ");
     scanf("%d", &indice);
-    indice = buscarSocio(soc, tam, indice);
+    indice = buscarSocio(soc, tam_Socios, indice);
 
     if(indice == -1)
     {
@@ -248,7 +275,7 @@ void modificarSocio(sSocios soc[], int tam)
     {
         printf("\nel siguiente empleado se eliminara del sistema...\n");
         mostrarSocio(soc, indice);
-        getResp(&respuesta, "\n\nEsta seguro que desea continuar? (s/n): ?: ");
+        getAnswer(&respuesta, "\n\nEsta seguro que desea continuar? (s/n): ?: ");
 
         if (respuesta == 's')
         {
@@ -303,30 +330,19 @@ void modificarSocio(sSocios soc[], int tam)
 
 }
 
-void ListarSocios ( sSocios soc[], int tam)
+void ListarSocios ( sSocios soc[], int tam_Socios)
 {
     printf("\n  Codigo  Nombre           Apellido         Genero  Telefono          Email                            D/MM/AAAA\n\n");
 
-    ordenarSocios(soc, tam);
+    ordenarSocios(soc, tam_Socios);
 
-    for(int  j = 0; j < tam; j++ )
+    for(int  j = 0; j < tam_Socios; j++ )
     {
-        if( soc[j].isEmpty == 1)
+        if( soc[j].isEmpty == 0)
         {
             printf("    %04d  %-15s  %-15s  %-6c  %-16s  %-31s  %2.2d/%.2d/%.4d\n", soc[j].codigoDeSocio, soc[j].nombre, soc[j].apellido, soc[j].sexo, soc[j].telefono, soc[j].eMail, soc[j].fecha.dia, soc[j].fecha.mes, soc[j].fecha.year);
         }
     }
-
-    /*for( int i = 0; i < tam2; i++)
-    {
-        for(int  j = 0; j < tam; j++ )
-        {
-            if( soc[j].isEmpty == 1)
-            {
-                printf("    %04d  %15s  %15s  %6.f  %.2d/%.2d/%.4d\n", soc[j].codigoDeSocio, soc[j].nombre, soc[j].apellido, soc[j].sexo, soc[j].fecha.diaDeIngreso, soc[j].fecha.mesDeIngreso, soc[j].fecha.yearDeIngreso);
-            }
-        }
-    }*/
 }
 
 void mostrarSocio (sSocios soc[], int i)
@@ -337,38 +353,39 @@ void mostrarSocio (sSocios soc[], int i)
 
 }
 
-void ordenarSocios(sSocios emp[], int tam)
+void ordenarSocios(sSocios soc[], int tam_Socios)
 {
-    sSocios empAux;
-    for ( int i = 0; i < tam; i++ )
+    sSocios socAux;
+
+    for ( int i = 0; i < tam_Socios; i++ )
     {
-        for (int j = i+1; j < tam; j++ )
+        for (int j = i+1; j < tam_Socios; j++ )
         {
-            if( stricmp(emp[i].apellido, emp[j].apellido) > 0)
+            if( stricmp(soc[i].apellido, soc[j].apellido) > 0)
             {
-                empAux = emp[i]; //empAux ahora vale B
-                emp[i] = emp[j]; // empI ahora vale A
-                emp[j] = empAux; // empJ ahora vale B
+                socAux = soc[i]; //socAux ahora vale B
+                soc[i] = soc[j]; // empI ahora vale A
+                soc[j] = socAux; // empJ ahora vale B
             }
 
-            if(stricmp(emp[i].nombre, emp[j].nombre) > 0)
+            if(stricmp(soc[i].nombre, soc[j].nombre) > 0)
             {
-                empAux = emp[i]; //empAux ahora vale B
-                emp[i] = emp[j]; // empI ahora vale A
-                emp[j] = empAux; // empJ ahora vale B
+                socAux = soc[i]; //empAux ahora vale B
+                soc[i] = soc[j]; // empI ahora vale A
+                soc[j] = socAux; // empJ ahora vale B
             }
 
         }
     }
 }
 
-int buscarEspacioLibreSocios (sSocios soc[], int tam)
+int buscarEspacioLibreSocios (sSocios soc[], int tam_Socios)
 {
     int indice = -1;
 
-    for (int i = 0; i < tam; i++)
+    for (int i = 0; i < tam_Socios; i++)
     {
-        if (soc[i].isEmpty == 0)
+        if (soc[i].isEmpty == 1)
         {
             indice = i;
             break;
@@ -377,13 +394,13 @@ int buscarEspacioLibreSocios (sSocios soc[], int tam)
     return indice;
 }
 
-int buscarSocio(sSocios soc[], int tam, int codigo)
+int buscarSocio(sSocios soc[], int tam_Socios, int codigo)
 {
     int indice = -1;
 
-    for ( int i = 0; i < tam; i++)
+    for ( int i = 0; i < tam_Socios; i++)
     {
-        if ( soc[i].codigoDeSocio == codigo && soc[i].isEmpty == 1 )
+        if ( soc[i].codigoDeSocio == codigo && soc[i].isEmpty == 0 )
         {
             indice = i;
             break;
@@ -392,11 +409,11 @@ int buscarSocio(sSocios soc[], int tam, int codigo)
     return indice;
 }
 
-int buscarUltimoCodigoSocio (sSocios soc[], int tam, int* ultimoCodigo)
+int buscarUltimoCodigoIncremental (sSocios soc[], int tam_Socios, int* ultimoCodigo)
 {
-    for (int i = 0; i < tam; i++)
+    for (int i = 0; i < tam_Socios; i++)
     {
-        if (soc[i].isEmpty == 1 && *ultimoCodigo < soc[i].codigoDeSocio)
+        if (soc[i].isEmpty == 0 && *ultimoCodigo < soc[i].codigoDeSocio)
         {
             *ultimoCodigo = soc[i].codigoDeSocio;
         }
@@ -405,38 +422,12 @@ int buscarUltimoCodigoSocio (sSocios soc[], int tam, int* ultimoCodigo)
     return *ultimoCodigo + 1;
 }
 
-void getResp (char* respuesta, char mensaje[])
-{
-    printf(mensaje);
-    *respuesta = getche();
-
-    while(tolower(*respuesta) != 's' && tolower(*respuesta) != 'n')
-    {
-        printf("\n\nEsa respuesta es invalida intente nuevamente...");
-        printf(mensaje);
-        *respuesta = getche();
-    }
-}
-
-void listarLibros(sLibros lib[], int tam)
-{
-    printf("\nCodigo del autor  Codigo del libro  titulo del libro\n\n");
-
-    for(int  j = 0; j < tam; j++ )
-    {
-        if(lib[j].isEmpty == 1)
-        {
-            printf("%-16d  %-16d  %-51s \n", lib[j].codigoAutor, lib[j].codigoLibro, lib[j].titulo);
-        }
-    }
-}
-
-void listarAutores(sAutores aut[], int tam)
+void listarAutores(sAutores aut[], int tam_Autores)
 {
     printf("\nCodigo del autor / nombre / apellido\n");
-    for (int i = 0; i < tam; i++)
+    for (int i = 0; i < tam_Autores; i++)
     {
-        if ( aut[i].isEmpty == 1)
+        if ( aut[i].isEmpty == 0)
         {
             printf("%d %s %s\n", aut[i].codigoDelAutor, aut[i].nombre, aut[i].apellido);
         }
@@ -445,7 +436,14 @@ void listarAutores(sAutores aut[], int tam)
 
 //-------------------------------------------------------------------------
 
-void obtenerPrestTotalYDiario(sPrestamo prest[], int tam, float* contadorDePrestamos, int* contadorDias)
+/*
+tam_Socios
+tam_Prestamos
+tam_Libros
+tam_Autores
+*/
+
+void obtenerPrestTotalYDiario(sPrestamos prest[], int tam, float* contadorDePrestamos, int* contadorDias)
 {
     int contador;
     for (int i = 0; i < 12; i++) // recorro todos los meses de un año
@@ -455,7 +453,7 @@ void obtenerPrestTotalYDiario(sPrestamo prest[], int tam, float* contadorDePrest
             contador = 0;
             for (int k = 0; k < tam; k++) // recorro los prestamos
             {
-                if (prest[k].fecha.dia == j+1 && prest[k].fecha.mes == i+1 && prest[k].isEmpty == 1 )
+                if (prest[k].fecha.dia == j+1 && prest[k].fecha.mes == i+1 && prest[k].isEmpty == 0 )
                 {
                     contador++;
                 }
@@ -470,7 +468,7 @@ void obtenerPrestTotalYDiario(sPrestamo prest[], int tam, float* contadorDePrest
     }
 }
 
-void prestamosTotalesyDiarios (sPrestamo prest[], int tam)
+void prestamosTotalesyDiarios (sPrestamos prest[], int tam)
 {
     float promedio = 0;
     int contadorDeDias = 0;
@@ -482,7 +480,7 @@ void prestamosTotalesyDiarios (sPrestamo prest[], int tam)
     printf("Promedio diario = %.2f \n", promedio);
 }
 
-void promedioNoSuperado (sPrestamo prest[], int tam)
+void promedioNoSuperado (sPrestamos prest[], int tam)
 {
     int contador = 0;
     float promedio = 0;
@@ -501,7 +499,7 @@ void promedioNoSuperado (sPrestamo prest[], int tam)
             contador = 0;
             for (int k = 0; k < tam; k++) // recorro los prestamos
             {
-                if (prest[k].fecha.dia == j+1 && prest[k].fecha.mes == i+1 && prest[k].isEmpty == 1 )
+                if (prest[k].fecha.dia == j+1 && prest[k].fecha.mes == i+1 && prest[k].isEmpty == 0 )
                 {
                     contador++;
                 }
@@ -517,7 +515,7 @@ void promedioNoSuperado (sPrestamo prest[], int tam)
     printf("los dias que no superan al prestamo son: %d \n\n", contadorDias);
 }
 
-void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4)
+void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4)
 {
     int libro;
     listarLibros(lib,tam3);
@@ -532,7 +530,7 @@ void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2,
         {
             for( int k = 0; k < tam; k++ ) // recorro los socios
             {
-                if( soc[k].isEmpty == 1 && prest[j].isEmpty == 1 && lib[libro-1].isEmpty == 1 && prest[j].codigoSocio == soc[k].codigoDeSocio )
+                if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[libro-1].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                 {
                     //printf("soc[%d].isEmpty = %d / prest[%d].isEmpty = %d / prest[%d].codigoEmpleado = %d / soc[%d].codigoDeSocio = %d\n\n", k, soc[k].isEmpty, j,prest[j].isEmpty,j, prest[j].codigoEmpleado, k, soc[k].codigoDeSocio);
                     printf("%-16d   %-16d  %-15s  %-15s  %-15d  %2.2d/%.2d/%.4d\n", prest[j].codigo, soc[k].codigoDeSocio, soc[k].nombre, soc[k].apellido, prest[j].codigoLibro, prest[j].fecha.dia, prest[j].fecha.mes, prest[j].fecha.year);
@@ -542,7 +540,7 @@ void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2,
     }
 }
 
-void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4, int* ultimoCodigo)
+void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4, int* ultimoCodigo)
 {
     int socio;
 
@@ -558,7 +556,7 @@ void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], in
         {
             for( int k = 0; k < tam; k++ ) // recorro los socios
             {
-                if( soc[k].isEmpty == 1 && prest[j].isEmpty == 1 && lib[socio-1].isEmpty == 1 && prest[j].codigoSocio == soc[k].codigoDeSocio )
+                if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[socio-1].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                 {
                     //printf("soc[%d].isEmpty = %d / prest[%d].isEmpty = %d / prest[%d].codigoEmpleado = %d / soc[%d].codigoDeSocio = %d\n\n", k, soc[k].isEmpty, j,prest[j].isEmpty,j, prest[j].codigoEmpleado, k, soc[k].codigoDeSocio);
                     printf("%-16d   %-16d  %-15s  %-15s  %-15d  %2.2d/%.2d/%.4d\n", prest[j].codigo, soc[k].codigoDeSocio, soc[k].nombre, soc[k].apellido, prest[j].codigoLibro , prest[j].fecha.dia, prest[j].fecha.mes, prest[j].fecha.year);
@@ -568,7 +566,7 @@ void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], in
     }
 }
 
-void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamo prest[], int tam3)
+void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamos prest[], int tam3)
 {
 
     int min = 0;
@@ -580,7 +578,7 @@ void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamo prest[], int 
         contador = 0;
         for (int j = 0; j < tam3; j++) // recorro los prestamos por cada libro
         {
-            if ( lib[i].codigoLibro == prest[j].codigoLibro && prest[j].isEmpty == 1 && lib[i].isEmpty == 1 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
+            if ( lib[i].codigoLibro == prest[j].codigoLibro && prest[j].isEmpty == 0 && lib[i].isEmpty == 0 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
             {
                 contador++;
             }
@@ -604,7 +602,7 @@ void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamo prest[], int 
         contador = 0;
         for ( int j = 0; j < tam3; j++ )
         {
-            if ( lib[i].codigoLibro == prest[j].codigoLibro && prest[j].isEmpty == 1 && lib[i].isEmpty == 1 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
+            if ( lib[i].codigoLibro == prest[j].codigoLibro && prest[j].isEmpty == 0 && lib[i].isEmpty == 0 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
             {
                 contador++;
             }
@@ -616,7 +614,7 @@ void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamo prest[], int 
     }
 }
 
-void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, sPrestamo prest[], int tam3)
+void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, sPrestamos prest[], int tam3)
 {
     sSocios auxSoc[tam];
     int j;
@@ -637,14 +635,14 @@ void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, 
 
     for(int  j = 0; j < tam; j++ )
     {
-        if( soc[j].isEmpty == 1)
+        if( soc[j].isEmpty == 0)
         {
             printf("    %04d  %-15s  %-15s  %-6c  %-16s  %-31s  %2.2d/%.2d/%.4d\n", soc[j].codigoDeSocio, soc[j].nombre, soc[j].apellido, soc[j].sexo, soc[j].telefono, soc[j].eMail, soc[j].fecha.dia, soc[j].fecha.mes, soc[j].fecha.year);
         }
     }
 }
 
-void listarLibrosPorFechaDeterminada(sLibros lib[], int tam, sPrestamo prest[], int tam2)
+void listarLibrosPorFechaDeterminada(sLibros lib[], int tam, sPrestamos prest[], int tam2)
 {
 
     sFecha fechaAux;
@@ -660,7 +658,7 @@ void listarLibrosPorFechaDeterminada(sLibros lib[], int tam, sPrestamo prest[], 
         {
             if( fechaAux.dia == prest[k].fecha.dia && fechaAux.mes == prest[k].fecha.mes && fechaAux.year == prest[k].fecha.year)
             {
-                if( lib[j].isEmpty == 1 && prest[k].isEmpty == 1 && prest[k].codigoLibro == lib[j].codigoLibro )
+                if( lib[j].isEmpty == 0 && prest[k].isEmpty == 0 && prest[k].codigoLibro == lib[j].codigoLibro )
                 {
                     printf("%-16d  %-16d  %-51s \n", lib[j].codigoAutor, lib[j].codigoLibro, lib[j].titulo);
                     break;
@@ -680,7 +678,7 @@ void listarLibrosAscendente(sLibros lib[], int tam_libros)
         flagNoEstaOrdenado = 0;
         for (int i = 1; i < tam_libros; i++)
         {
-            if (stricmp(lib[i].titulo, lib[i-1].titulo) > 0 && lib[i].isEmpty == 1 )
+            if (stricmp(lib[i].titulo, lib[i-1].titulo) > 0 && lib[i].isEmpty == 0 )
             {
                 auxLib[0] = lib[i];
                 lib[i] = lib[i-1];
@@ -693,7 +691,7 @@ void listarLibrosAscendente(sLibros lib[], int tam_libros)
     listarLibros(lib,tam_libros);
 }
 
-void socioMasPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2)
+void socioMenosPrestamos (sSocios soc[],int tam, sPrestamos prest[], int tam2)
 {
 
     int max = 0;
@@ -705,7 +703,7 @@ void socioMasPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2)
         contador = 0;
         for (int j = 0; j < tam2; j++) // recorro los prestamos por cada socio
         {
-            if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 1 && soc[i].isEmpty == 1 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
+            if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 0 && soc[i].isEmpty == 0 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
             {
                 contador++;
             }
@@ -729,7 +727,7 @@ void socioMasPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2)
         contador = 0;
         for ( int j = 0; j < tam2; j++ )
         {
-            if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 1 && soc[i].isEmpty == 1 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
+            if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 0 && soc[i].isEmpty == 0 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
             {
                 contador++;
             }
@@ -741,7 +739,7 @@ void socioMasPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2)
     }
 }
 
-void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamo prest[], int tam2)
+void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamos prest[], int tam2)
 {
     sFecha fechaAux;
     getInt(&fechaAux.dia, "Ingrese dia de ingreso: ", "ERROR: debe ser un numero entre 32 y 1. ", 1, 32);
@@ -756,7 +754,7 @@ void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamo prest[], 
         {
             if( fechaAux.dia == prest[k].fecha.dia && fechaAux.mes == prest[k].fecha.mes && fechaAux.year == prest[k].fecha.year)
             {
-                if( soc[j].isEmpty == 1 && prest[k].isEmpty == 1 && prest[k].codigoSocio == soc[j].codigoDeSocio )
+                if( soc[j].isEmpty == 0 && prest[k].isEmpty == 0 && prest[k].codigoSocio == soc[j].codigoDeSocio )
                 {
                    printf("%-16d   %-16d  %-15s  %-15s  %-15d\n", prest[k].codigo, soc[j].codigoDeSocio, soc[j].nombre, soc[j].apellido, prest[k].codigoLibro);
 

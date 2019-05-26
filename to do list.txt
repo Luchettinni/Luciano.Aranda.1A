@@ -1,0 +1,27 @@
+---TO DO/FIX LIST---
+
+* hay un hardcodeo de prestamos en el MAIN y no en su funcion (FIXED)
+* la funcion de hardcodeo tiene nombre erroneo (FIXED)
+* los "isEmpty" se utilizan al reves de como su nombre lo indica (1 = not empty | 0 = is empty) (FIXED)
+* falta actualizar la biblioteca input a su nueva version (FIXED)
+* el listado de prestamos se ve mal esteticamente (FIXED)
+
+//----------------------------------------------------------------------------
+
+* Si hay CERO prestamos, el promedio diario da un numero sarasa (NOT FIXED)
+* algunos textos del abm no tienen su espaciado correspondiente (NOT FIXED)
+* algunas opciones del abm entregan pausas inecesarias (NOT FIXED)
+* en los comentarios, falta cambiar los parametros "tam" por su nombre mas descriptivo (NOT FIXED)
+* faltan bibliotecas para todas las entidades (NOT FIXED)
+* faltan comentarios en algunas funciones (NOT FIXED)
+* falta distribuir las funciones a sus respectivas bibliotecas de sus respectivas entidades (NOT FIXED)
+* el nombre de la funcion de "ordenamiento decendente" esta como "ascendente" (NOT FIXED)
+* INFORMES opcion 3: si no hay prestamos, mostrar en pantalla un mensaje. (NOT DONE)
+* INFORMES opcion 4: si no hay prestamos, mostrar en pantalla un mensaje. (NOT DONE)
+* INFORMES opcion 7: si no hay prestamos, mostrar en pantalla un mensaje. (NOT DONE)
+* INFORMES opcion 8: si no hay prestamos, mostrar en pantalla un mensaje. (NOT DONE)
+* INFORMES opcion 5: tiene un re bug cuando no hay prestamos (NOT FIXED)
+* INFORMES opcion 6: tiene un re bug cuando no hay prestamos (NOT FIXED)
+* SOCIOS opcion 6: textos se ven mal esteticamente
+
+

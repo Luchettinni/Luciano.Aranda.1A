@@ -1,4 +1,4 @@
-typedef struct
+typedef struct // Fecha
 {
     int dia;
     int mes;
@@ -6,7 +6,7 @@ typedef struct
 
 } sFecha;
 
-typedef struct
+typedef struct // Socios
 {
     int isEmpty;
     int codigoDeSocio;
@@ -21,7 +21,7 @@ typedef struct
 
 } sSocios;
 
-typedef struct
+typedef struct // Autores
 {
     int isEmpty;
     int codigoDelAutor;
@@ -30,7 +30,7 @@ typedef struct
 
 } sAutores;
 
-typedef struct
+typedef struct // Libros
 {
     int isEmpty;
     int codigoAutor;
@@ -39,7 +39,7 @@ typedef struct
 
 } sLibros;
 
-typedef struct
+typedef struct // Prestamos
 {
     int codigo;
     int codigoSocio;
@@ -47,18 +47,20 @@ typedef struct
     int isEmpty;
     sFecha fecha;
 
-} sPrestamo;
+} sPrestamos;
 
-/** \brief rellenana los campos "isEmpty" de las estructuras con 1.
+/** \brief "Inicializa" estructuras, rellenandolas con sus campos "isEmpty" en 1.
  *
  * \param soc[] es la estructura de tipo "sSocios" a rellenar con unos en su campo isEmpty.
+ * \param prest[] es la estructura de tipo "sSocios" a rellenar con unos en su campo isEmpty.
+ * \param lib[] es la estructura de tipo "sSocios" a rellenar con unos en su campo isEmpty.
  * \param tam es el tamaño de la estructura "sSocios".
  * \param prest[] es la estructura de tipo "sPrestamo" a rellenar con unos en su campo isEmpty.
  * \param tam2 es el tamaño de la estructura "sPrestamo".
  * \return retorna vacio
  *
  */
-void borrarBaseDeDatos(sSocios soc[], int tam, sPrestamo prest[], int tam2, sLibros lib[],int tam3, sAutores aut[], int tam4);
+void inicializarEstructuras(sSocios soc[], int tam_Socios, sPrestamos prest[], int tam_Prestamos, sLibros lib[],int tam_Libros, sAutores aut[], int tam_Autores);
 
 /** \brief Inicializa estructuras
  *
@@ -71,7 +73,7 @@ void borrarBaseDeDatos(sSocios soc[], int tam, sPrestamo prest[], int tam2, sLib
  * \return retorna vacio
  *
  */
-void inicializacionDeEstructuras(sSocios socios[], int tam, sAutores autores[], int tam2, sLibros libros[], int tam3);
+void hardcodeDeEstructuras(sSocios socios[], sAutores autores[], sLibros libros[], sPrestamos prest[]);
 
 /** \brief muestra en pantalla un menu de opciones y pregunta por la opcion a efectuar
  *
@@ -106,7 +108,7 @@ int subMenuModificarSocio();
  * \return retorna vacio
  *
  */
-void AltaSocio (sSocios soc[], int tam, int* UltimoCodigoDeSocio);
+void AltaSocio (sSocios soc[], int tam_Socios, int* UltimoCodigoDeSocio);
 
 /** \brief da de baja un socio realizando una baja logica, rellenando el campo "isEmpty" del socio con un cero.
  *
@@ -115,7 +117,7 @@ void AltaSocio (sSocios soc[], int tam, int* UltimoCodigoDeSocio);
  * \return retorna vacio
  *
  */
-void bajaSocio (sSocios soc[], int tam);
+void bajaSocio (sSocios soc[], int tam_Socios);
 
 /** \brief modifica uno de los campos de la estructura socios.
  *
@@ -124,7 +126,7 @@ void bajaSocio (sSocios soc[], int tam);
  * \return retorna vacio
  *
  */
-void modificarSocio(sSocios emp[], int tam);
+void modificarSocio(sSocios soc[], int tam_Socios);
 
 /** \brief muestra a un unico "socio" especifico
  *
@@ -142,7 +144,7 @@ void mostrarSocio (sSocios soc[], int i);
  * \return retorna vacio
  *
  */
-void ListarSocios ( sSocios soc[], int tam);
+void ListarSocios ( sSocios soc[], int tam_Socios);
 
 /** \brief ordena una estructura por apellido (ascendente) y nombre (ascendente)
  *
@@ -151,7 +153,7 @@ void ListarSocios ( sSocios soc[], int tam);
  * \return
  *
  */
-void ordenarSocios(sSocios emp[], int tam);
+void ordenarSocios(sSocios soc[], int tam_Socios);
 
 //-----------------------------------------------------------------------------------------------------
 
@@ -162,7 +164,7 @@ void ordenarSocios(sSocios emp[], int tam);
  * \return retorna un entero que corresponde al indice de la estructura en el cual existe un espacio libre.
  *
  */
-int buscarEspacioLibreSocios (sSocios soc[], int tam);
+int buscarEspacioLibreSocios (sSocios soc[], int tam_Socios);
 
 /** \brief Busca a un socio especifico por su codigo correspondiente
  *
@@ -172,7 +174,7 @@ int buscarEspacioLibreSocios (sSocios soc[], int tam);
  * \return retorna el indice de la estructura al que partenece el socio
  *
  */
-int buscarSocio(sSocios soc[], int tam, int codigo);
+int buscarSocio(sSocios soc[], int tam_Socios, int codigo);
 
 /** \brief busca en una estructura, el ultimo codigo del ultimo socio y lo incrementa
  *
@@ -182,7 +184,7 @@ int buscarSocio(sSocios soc[], int tam, int codigo);
  * \return retorna el ultimo codigo existente incrementado en uno
  *
  */
-int buscarUltimoCodigoSocio (sSocios soc[], int tam, int* ultimoCodigo);
+int buscarUltimoCodigoIncremental (sSocios soc[], int tam_Socios, int* ultimoCodigo);
 
 /** \brief muestra un pregunta o un mensaje y ofrece como opcion de respuesta (s/n)
  *
@@ -195,15 +197,7 @@ void getResp (char* respuesta, char mensaje[]);
 
 //-----------------------------------------------------------------------------------------------------
 
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
-void listarLibros(sLibros lib[], int tam);
-void listarAutores(sAutores aut[], int tam);
+void listarAutores(sAutores aut[], int tam_Autores);
 
 //------------------------------------------------------------------------
 
@@ -215,14 +209,14 @@ void listarAutores(sAutores aut[], int tam);
  *
  */
 
-void obtenerPrestTotalYDiario(sPrestamo prest[], int tam, float* contadorDePrestamos, int* contadorDias);
-void prestamosTotalesyDiarios (sPrestamo prest[], int tam);
-void promedioNoSuperado (sPrestamo prest[], int tam);
-void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4);
-void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4, int* ultimoCodigo);
-void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamo prest[], int tam3);
-void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, sPrestamo prest[], int tam3);
-void listarLibrosPorFechaDeterminada(sLibros lib[], int tam3, sPrestamo prest[], int tam2);
-void socioMasPrestamos (sSocios soc[],int tam, sPrestamo prest[], int tam2);
+void obtenerPrestTotalYDiario(sPrestamos prest[], int tam, float* contadorDePrestamos, int* contadorDias);
+void prestamosTotalesyDiarios (sPrestamos prest[], int tam);
+void promedioNoSuperado (sPrestamos prest[], int tam);
+void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4);
+void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4, int* ultimoCodigo);
+void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamos prest[], int tam3);
+void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, sPrestamos prest[], int tam3);
+void listarLibrosPorFechaDeterminada(sLibros lib[], int tam3, sPrestamos prest[], int tam2);
+void socioMenosPrestamos (sSocios soc[],int tam, sPrestamos prest[], int tam2);
 void listarLibrosAscendente(sLibros lib[], int tam_libros);
-void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamo prest[], int tam2);
+void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamos prest[], int tam2);

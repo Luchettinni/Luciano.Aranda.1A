@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Input.h" />
+		<Unit filename="Libros.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libros.h" />
 		<Unit filename="Prestamos.c">
 			<Option compilerVar="CC" />
 		</Unit>

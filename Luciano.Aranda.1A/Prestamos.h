@@ -5,10 +5,10 @@
 
 #endif // SOCIO_H_INCLUDED
 
-void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4, int* codigoPrestamo);
-void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4);
+void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4, int* codigoPrestamo);
+void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4);
 
 //-----------------------------------------------------------------------------------------------------
 
-int buscarultimoCodigoPrest (sPrestamo prest[], int tam, int* codigoPrest);
-int buscarEspacioLibrePrestamos (sPrestamo prest[], int tam);
+int buscarultimoCodigoPrest (sPrestamos prest[], int tam, int* codigoPrest);
+int buscarEspacioLibrePrestamos (sPrestamos prest[], int tam);

@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
-#include <ctype.h>
-#include <string.h>
+
+//---------------------------------------------
 
 #ifndef SOCIO_H_INCLUDED
 #define SOCIO_H_INCLUDED
@@ -11,6 +10,8 @@
 
 #endif // SOCIO_H_INCLUDED}
 
+//---------------------------------------------
+
 #ifndef PRESTAMOS_H_INCLUDED
 #define PRESTAMOS_H_INCLUDED
 
@@ -18,12 +19,25 @@
 
 #endif // PRESTAMOS_H_INCLUDED
 
+//---------------------------------------------
+
+#ifndef LIBROS_H_INCLUDED
+#define LIBROS_H_INCLUDED
+
+#include "Libros.h"
+
+#endif // LIBROS_H_INCLUDED
+
+//---------------------------------------------
+
 #ifndef INPUT_H_INCLUDED
 #define INPUT_H_INCLUDED
 
 #include "Input.h"
 
 #endif // INPUT_H_INCLUDED
+
+//---------------------------------------------
 
 #define TAM_SOCIOS 10
 #define TAM_AUTORES 10
@@ -35,11 +49,11 @@ int main()
     sSocios socios[TAM_SOCIOS];
     sAutores autor[TAM_AUTORES];
     sLibros libros[TAM_LIBROS];
-    sPrestamo prestamo[TAM_PRESTAMOS] = {
-    {1,1,2,1, {8,6,2019} },
-    {2,2,2,1, {8,7,2019} },
-    {3,2,6,1, {7,5,2019} },
-    {5,2,2,1, {7,5,2019} }
+    sPrestamos prestamo[TAM_PRESTAMOS] = {
+    {1,1,2,0, {8,6,2019} },
+    {2,2,2,0, {8,7,2019} },
+    {3,2,6,0, {7,5,2019} },
+    {5,2,2,0, {7,5,2019} }
     };// dale, DALE, PONETE A HARDCODEAR, NUNCA VAS A ROMPER MI ABM *Risa de villano generica* (?
 
     char confirma;
@@ -49,13 +63,12 @@ int main()
     int codigoSocio = 0;
     int codigoPrestamoo = 0;
 
-    borrarBaseDeDatos(socios, TAM_SOCIOS, prestamo, TAM_PRESTAMOS,libros,TAM_LIBROS,autor,TAM_AUTORES);
-    inicializacionDeEstructuras(socios, TAM_SOCIOS, autor , TAM_AUTORES, libros, TAM_LIBROS );
+    inicializarEstructuras(socios, TAM_SOCIOS, prestamo, TAM_PRESTAMOS,libros,TAM_LIBROS,autor,TAM_AUTORES);
+    hardcodeDeEstructuras(socios, autor , libros, prestamo );
 
-    buscarUltimoCodigoSocio(socios,TAM_SOCIOS,&codigoSocio);
+    buscarUltimoCodigoIncremental(socios,TAM_SOCIOS,&codigoSocio);
 
     do {
-
         system("cls");
         switch (menuDeOpciones())
         {
@@ -179,7 +192,7 @@ int main()
                             break;
 
                         case 6:
-                            socioMasPrestamos(socios,TAM_SOCIOS,prestamo,TAM_PRESTAMOS);
+                            socioMenosPrestamos(socios,TAM_SOCIOS,prestamo,TAM_PRESTAMOS);
                             system("pause");
                             break;
 
@@ -222,7 +235,7 @@ int main()
                 break;
 
             case 3:
-                getResp(&confirma, "esta seguro que desea salir? (s/n): ");
+                getAnswer(&confirma, "esta seguro que desea salir? (s/n): ");
                 printf("\n");
                 break;
 

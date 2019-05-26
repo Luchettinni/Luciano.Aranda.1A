@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <conio.h>
 
 #ifndef Input_H_INCLUDED
 #define Input_H_INCLUDED
@@ -9,6 +10,8 @@
 #include "Input.h"
 
 #endif // Input_H_INCLUDED
+
+// BIBLIOTECAS INPUT, POR LUCHETTINNI-DEV ( VERSION 4.0 )
 
 void getInt(int* input, char message[], char eMessage[], int lowLimit, int hiLimit)
 {
@@ -87,7 +90,7 @@ void getString(char* input, char message[], char eMessage[], int lowLimit, int h
     printf(message);
 
     gets(input);
-    *input = tolower(*input);
+    input = strlwr(input);
 
     while (strlen(input) < lowLimit || strlen(input) > hiLimit)
     {
@@ -96,7 +99,21 @@ void getString(char* input, char message[], char eMessage[], int lowLimit, int h
         printf("\n\n");
         printf(message);
         gets(input);
-        *input = tolower(*input);
+        input = strlwr(input);
     }
 }
 
+void getAnswer (char* respuesta, char mensaje[])
+{
+    printf(mensaje);
+    *respuesta = getche();
+    *respuesta = tolower(*respuesta);
+
+    while(*respuesta != 's' && *respuesta != 'n')
+    {
+        printf("\n\nEsa respuesta es invalida intente nuevamente...\n\n");
+        printf(mensaje);
+        *respuesta = getche();
+        *respuesta = tolower(*respuesta);
+    }
+}

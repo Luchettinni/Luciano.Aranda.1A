@@ -1,12 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//---------------------------------------------
+
 #ifndef SOCIO_H_INCLUDED
 #define SOCIO_H_INCLUDED
 
 #include "Socio.h"
 
 #endif // SOCIO_H_INCLUDED
+
+//---------------------------------------------
+
+#ifndef LIBROS_H_INCLUDED
+#define LIBROS_H_INCLUDED
+
+#include "Libros.h"
+
+#endif // LIBROS_H_INCLUDED
+
+//---------------------------------------------
 
 #ifndef PRESTAMOS_H_INCLUDED
 #define PRESTAMOS_H_INCLUDED
@@ -15,6 +28,8 @@
 
 #endif // PRESTAMOS_H_INCLUDED
 
+//---------------------------------------------
+
 #ifndef INPUT_H_INCLUDED
 #define INPUT_H_INCLUDED
 
@@ -22,7 +37,9 @@
 
 #endif // INPUT_H_INCLUDED
 
-void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4, int* codigoPrestamo)
+//---------------------------------------------
+
+void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4, int* codigoPrestamo)
 {
     char respuesta;
     int opcion;
@@ -41,7 +58,7 @@ void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[
     {
         printf("\nSe realizara el alta del siguiente socio...\n");
         mostrarSocio(soc, indice);
-        getResp(&respuesta, "\n\nEsta seguro que desea continuar?: ");
+        getAnswer(&respuesta, "\n\nEsta seguro que desea continuar?: ");
 
         if(respuesta == 's')
         {
@@ -51,12 +68,11 @@ void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[
             getInt(&opcion, "\n\nSeleccione un libro: ", "\nERROR: ese libro no existe...", 1,6);
 
             int indice2 = buscarEspacioLibrePrestamos(prest, tam4);
-            //printf("indice2 = %d", indice2);
             prest[indice2].codigoSocio = soc[indice].codigoDeSocio;
 
             prest[indice2].codigoLibro = opcion;
             *codigoPrestamo = buscarultimoCodigoPrest(prest, tam4, codigoPrestamo);
-            prest[indice2].isEmpty = 1;
+            prest[indice2].isEmpty = 0;
             prest[indice2].codigo = *codigoPrestamo;
 
             getInt(&prest[indice2].fecha.dia, "Ingrese el dia actual: ", "ERROR: debe ser un numero entre 32 y 1. ", 1, 32);
@@ -73,9 +89,9 @@ void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[
     }
 }
 
-void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamo prest[], int tam4)
+void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4)
 {
-    printf("\n  Codigo de prestamo  Codigo de socio           Nombre         Apellido                                      Libro prestado\n\n");
+    printf("\nCodigo de prestamo  Codigo de socio  Nombre                        Apellido         Libro prestado                       D/MM/AAAA\n\n");
 
     for( int i = 0; i < tam3; i++) // recorre los libros
     {
@@ -86,10 +102,10 @@ void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros 
                 for( int k = 0; k < tam; k++ ) // recorro los ...?
                 {
 
-                    if( soc[k].isEmpty == 1 && prest[j].isEmpty == 1 && lib[i].isEmpty == 1 && prest[j].codigoSocio == soc[k].codigoDeSocio )
+                    if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[i].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                     {
                         //printf("soc[%d].isEmpty = %d / prest[%d].isEmpty = %d / prest[%d].codigoEmpleado = %d / soc[%d].codigoDeSocio = %d\n\n", k, soc[k].isEmpty, j,prest[j].isEmpty,j, prest[j].codigoEmpleado, k, soc[k].codigoDeSocio);
-                        printf("    %16d    %13d  %15s  %15s  %51s  %2.2d/%.2d/%.4d\n", prest[j].codigo, soc[k].codigoDeSocio, soc[k].nombre, soc[k].apellido, lib[i].titulo, prest[j].fecha.dia, prest[j].fecha.mes, prest[j].fecha.year);
+                        printf("%-04d                %-04d             %-15s               %-15s  %-35s  %-2.2d/%.2d/%.4d\n", prest[j].codigo, soc[k].codigoDeSocio, soc[k].nombre, soc[k].apellido, lib[i].titulo, prest[j].fecha.dia, prest[j].fecha.mes, prest[j].fecha.year);
                     }
                 }
             }
@@ -97,11 +113,11 @@ void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros 
     }
 }
 
-int buscarultimoCodigoPrest (sPrestamo prest[], int tam, int* codigoPrest)
+int buscarultimoCodigoPrest (sPrestamos prest[], int tam, int* codigoPrest)
 {
     for (int i = 0; i < tam; i++)
     {
-        if (prest[i].isEmpty == 1 && *codigoPrest < prest[i].codigo)
+        if (prest[i].isEmpty == 0 && *codigoPrest < prest[i].codigo)
         {
             *codigoPrest = prest[i].codigo;
         }
@@ -109,13 +125,13 @@ int buscarultimoCodigoPrest (sPrestamo prest[], int tam, int* codigoPrest)
     return *codigoPrest + 1;
 }
 
-int buscarEspacioLibrePrestamos (sPrestamo prest[], int tam)
+int buscarEspacioLibrePrestamos (sPrestamos prest[], int tam)
 {
     int indice = -1;
 
     for (int i = 0; i < tam; i++)
     {
-        if (prest[i].isEmpty == 0)
+        if (prest[i].isEmpty == 1)
         {
             indice = i;
             break;
