@@ -10,5 +10,5 @@ void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros 
 
 //-----------------------------------------------------------------------------------------------------
 
-int buscarultimoCodigoPrest (sPrestamos prest[], int tam, int* codigoPrest);
+int buscarUltimoCodigoPrest (sPrestamos prest[], int tam);
 int buscarEspacioLibrePrestamos (sPrestamos prest[], int tam);

@@ -100,12 +100,13 @@ void hardcodeDeEstructuras(sSocios socios[], sAutores autores[], sLibros libros[
 
     sPrestamos prestAux [] = {
     {1,1,2,0, {8,6,2019} },
-    {2,2,2,0, {8,7,2019} },
-    {3,2,6,0, {7,5,2019} },
-    {5,2,2,0, {7,5,2019} }
-    };// dale, DALE, PONETE A HARDCODEAR, NUNCA VAS A ROMPER MI ABM *Risa de villano generica* (?
+    {1,1,2,0, {8,6,2019} },
+    {2,4,2,0, {8,7,2019} },
+    {3,4,6,0, {7,5,2019} },
+    {5,4,2,0, {7,5,2019} }
+    };
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
         prest[i] = prestAux[i];
     }
@@ -196,7 +197,7 @@ void AltaSocio (sSocios soc[], int tam_Socios, int* UltimoCodigoDeSocio)
     }
     else
     {
-        *UltimoCodigoDeSocio = buscarUltimoCodigoIncremental(soc, tam_Socios, UltimoCodigoDeSocio);
+        *UltimoCodigoDeSocio += 1;
         fflush(stdin);
         soc[indice].codigoDeSocio = *UltimoCodigoDeSocio;
 
@@ -409,17 +410,20 @@ int buscarSocio(sSocios soc[], int tam_Socios, int codigo)
     return indice;
 }
 
-int buscarUltimoCodigoIncremental (sSocios soc[], int tam_Socios, int* ultimoCodigo)
+int buscarUltimoCodigo (sSocios soc[], int tam_Socios, int ultimoCodigo)
 {
+    ultimoCodigo = 0;
+
     for (int i = 0; i < tam_Socios; i++)
     {
-        if (soc[i].isEmpty == 0 && *ultimoCodigo < soc[i].codigoDeSocio)
+        if (soc[i].isEmpty == 0 && ultimoCodigo < soc[i].codigoDeSocio)
         {
-            *ultimoCodigo = soc[i].codigoDeSocio;
+            ultimoCodigo = soc[i].codigoDeSocio;
         }
 
     }
-    return *ultimoCodigo + 1;
+
+    return ultimoCodigo;
 }
 
 void listarAutores(sAutores aut[], int tam_Autores)
@@ -607,7 +611,7 @@ void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamos prest[], int
                 contador++;
             }
         }
-        if (contador == min)
+        if (contador == min && lib[i].isEmpty == 0)
         {
             printf("%-16d  %-16d  %-51s \n", lib[i].codigoAutor, lib[i].codigoLibro, lib[i].titulo);
         }
@@ -669,7 +673,7 @@ void listarLibrosPorFechaDeterminada(sLibros lib[], int tam, sPrestamos prest[],
     }
 }
 
-void listarLibrosAscendente(sLibros lib[], int tam_libros)
+void listarLibrosDecendente(sLibros lib[], int tam_libros)
 {
     int flagNoEstaOrdenado = 1;
     sLibros auxLib[tam_libros];
@@ -703,9 +707,9 @@ void socioMenosPrestamos (sSocios soc[],int tam, sPrestamos prest[], int tam2)
         contador = 0;
         for (int j = 0; j < tam2; j++) // recorro los prestamos por cada socio
         {
-            if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 0 && soc[i].isEmpty == 0 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
+            if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 0 && soc[i].isEmpty == 0 ) // si ese socio realizo un prestamo, lo cuento
             {
-                contador++;
+                contador++; // cantidad de prestamos que un socio realizo
             }
         }
 
@@ -714,25 +718,25 @@ void socioMenosPrestamos (sSocios soc[],int tam, sPrestamos prest[], int tam2)
             max = contador;
             flag = 1;
         }
-        else if ( contador >= max && contador != 0)
+        else if ( contador > max && contador != 0)
         {
             max = contador;
         }
 
     }
 
-    printf("\nCodigo de socio  Nombre           Apellido         Codigo de libro\n\n");
+    printf("\nCodigo de socio   Nombre           Apellido         Codigo de libro\n\n");
     for ( int i = 0; i < tam; i++ ) // este for, recorre nuevamente todo, comparando el minimo encontrado
     {
-        contador = 0;
+        contador = 0; // seteo la cantidad de prestamos en cero para este socio a recorrer
         for ( int j = 0; j < tam2; j++ )
         {
-            if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 0 && soc[i].isEmpty == 0 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
+            if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 0 && soc[i].isEmpty == 0 )
             {
-                contador++;
+                contador++; // cantidad de prestamos que realizo
             }
         }
-        if (contador == max)
+        if (contador == max && soc[i].isEmpty == 0)
         {
             printf("%-16d  %-15s  %-15s  %-15d\n", soc[i].codigoDeSocio, soc[i].nombre, soc[i].apellido, prest[i].codigoLibro);
         }

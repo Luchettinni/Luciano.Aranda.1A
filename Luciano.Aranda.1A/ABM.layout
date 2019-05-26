@@ -2,12 +2,114 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="Input.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="206" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Libros.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="253" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Socio.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="23457" topLine="282" />
+		</Cursor>
+		<Folding>
+			<Collapse line="36" />
+			<Collapse line="38" />
+			<Collapse line="43" />
+			<Collapse line="48" />
+			<Collapse line="53" />
+			<Collapse line="115" />
+			<Collapse line="130" />
+			<Collapse line="150" />
+			<Collapse line="173" />
+			<Collapse line="226" />
+			<Collapse line="236" />
+			<Collapse line="243" />
+			<Collapse line="248" />
+			<Collapse line="254" />
+			<Collapse line="262" />
+			<Collapse line="271" />
+			<Collapse line="275" />
+			<Collapse line="281" />
+			<Collapse line="283" />
+			<Collapse line="322" />
+			<Collapse line="334" />
+			<Collapse line="340" />
+			<Collapse line="342" />
+			<Collapse line="349" />
+			<Collapse line="357" />
+			<Collapse line="361" />
+			<Collapse line="363" />
+			<Collapse line="365" />
+			<Collapse line="372" />
+			<Collapse line="383" />
+			<Collapse line="387" />
+			<Collapse line="389" />
+			<Collapse line="398" />
+			<Collapse line="402" />
+			<Collapse line="404" />
+			<Collapse line="429" />
+			<Collapse line="432" />
+			<Collapse line="434" />
+			<Collapse line="442" />
+			<Collapse line="450" />
+			<Collapse line="453" />
+			<Collapse line="455" />
+			<Collapse line="458" />
+			<Collapse line="460" />
+			<Collapse line="465" />
+			<Collapse line="475" />
+			<Collapse line="487" />
+			<Collapse line="498" />
+			<Collapse line="501" />
+			<Collapse line="504" />
+			<Collapse line="506" />
+			<Collapse line="512" />
+			<Collapse line="522" />
+			<Collapse line="530" />
+			<Collapse line="533" />
+			<Collapse line="535" />
+			<Collapse line="537" />
+			<Collapse line="547" />
+			<Collapse line="621" />
+			<Collapse line="625" />
+			<Collapse line="630" />
+			<Collapse line="640" />
+			<Collapse line="642" />
+			<Collapse line="649" />
+			<Collapse line="659" />
+			<Collapse line="661" />
+			<Collapse line="663" />
+			<Collapse line="665" />
+			<Collapse line="676" />
+			<Collapse line="680" />
+			<Collapse line="683" />
+			<Collapse line="685" />
+			<Collapse line="746" />
+			<Collapse line="755" />
+			<Collapse line="757" />
+			<Collapse line="759" />
+			<Collapse line="761" />
+		</Folding>
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9854" topLine="134" />
+		</Cursor>
+	</File>
 	<File name="Socio.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6486" topLine="84" />
+			<Cursor1 position="4651" topLine="3" />
 		</Cursor>
 		<Folding>
 			<Collapse line="1" />
+			<Collapse line="9" />
+			<Collapse line="24" />
+			<Collapse line="33" />
 			<Collapse line="51" />
 			<Collapse line="64" />
 			<Collapse line="77" />
@@ -26,155 +128,25 @@
 			<Collapse line="203" />
 		</Folding>
 	</File>
-	<File name="Libros.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Libros.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="253" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8095" topLine="230" />
-		</Cursor>
-	</File>
-	<File name="Prestamos.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="72" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Socio.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7284" topLine="53" />
+			<Cursor1 position="340" topLine="3" />
 		</Cursor>
 		<Folding>
-			<Collapse line="36" />
-			<Collapse line="38" />
-			<Collapse line="43" />
-			<Collapse line="48" />
-			<Collapse line="53" />
-			<Collapse line="60" />
-			<Collapse line="62" />
-			<Collapse line="71" />
-			<Collapse line="75" />
-			<Collapse line="83" />
-			<Collapse line="86" />
-			<Collapse line="96" />
-			<Collapse line="100" />
-			<Collapse line="108" />
-			<Collapse line="114" />
-			<Collapse line="129" />
-			<Collapse line="149" />
-			<Collapse line="172" />
-			<Collapse line="190" />
-			<Collapse line="193" />
-			<Collapse line="197" />
-			<Collapse line="225" />
-			<Collapse line="261" />
-			<Collapse line="270" />
-			<Collapse line="274" />
-			<Collapse line="280" />
-			<Collapse line="282" />
-			<Collapse line="321" />
-			<Collapse line="339" />
-			<Collapse line="341" />
-			<Collapse line="348" />
-			<Collapse line="356" />
-			<Collapse line="360" />
-			<Collapse line="362" />
-			<Collapse line="364" />
-			<Collapse line="371" />
-			<Collapse line="382" />
-			<Collapse line="386" />
-			<Collapse line="388" />
-			<Collapse line="397" />
-			<Collapse line="401" />
-			<Collapse line="403" />
-			<Collapse line="412" />
-			<Collapse line="414" />
-			<Collapse line="416" />
-			<Collapse line="425" />
-			<Collapse line="428" />
-			<Collapse line="430" />
-			<Collapse line="438" />
-			<Collapse line="446" />
-			<Collapse line="449" />
-			<Collapse line="451" />
-			<Collapse line="454" />
-			<Collapse line="456" />
-			<Collapse line="461" />
-			<Collapse line="471" />
-			<Collapse line="483" />
-			<Collapse line="494" />
-			<Collapse line="497" />
-			<Collapse line="500" />
-			<Collapse line="502" />
-			<Collapse line="508" />
-			<Collapse line="518" />
-			<Collapse line="526" />
-			<Collapse line="529" />
-			<Collapse line="531" />
-			<Collapse line="533" />
-			<Collapse line="543" />
-			<Collapse line="552" />
-			<Collapse line="555" />
-			<Collapse line="557" />
-			<Collapse line="559" />
-			<Collapse line="569" />
-			<Collapse line="576" />
-			<Collapse line="579" />
-			<Collapse line="581" />
-			<Collapse line="587" />
-			<Collapse line="592" />
-			<Collapse line="600" />
-			<Collapse line="603" />
-			<Collapse line="605" />
-			<Collapse line="610" />
-			<Collapse line="617" />
-			<Collapse line="621" />
-			<Collapse line="626" />
-			<Collapse line="636" />
-			<Collapse line="638" />
-			<Collapse line="645" />
-			<Collapse line="655" />
-			<Collapse line="657" />
-			<Collapse line="659" />
-			<Collapse line="661" />
-			<Collapse line="672" />
-			<Collapse line="676" />
-			<Collapse line="679" />
-			<Collapse line="681" />
-			<Collapse line="694" />
-			<Collapse line="701" />
-			<Collapse line="704" />
-			<Collapse line="706" />
-			<Collapse line="712" />
-			<Collapse line="717" />
-			<Collapse line="725" />
-			<Collapse line="728" />
-			<Collapse line="730" />
-			<Collapse line="735" />
-			<Collapse line="742" />
-			<Collapse line="751" />
-			<Collapse line="753" />
-			<Collapse line="755" />
-			<Collapse line="757" />
+			<Collapse line="23" />
 		</Folding>
 	</File>
-	<File name="Prestamos.c" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Prestamos.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2690" topLine="41" />
+			<Cursor1 position="3666" topLine="41" />
 		</Cursor>
 		<Folding>
-			<Collapse line="42" />
+			<Collapse line="85" />
 		</Folding>
 	</File>
-	<File name="Libros.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Prestamos.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="340" topLine="14" />
-		</Cursor>
-	</File>
-	<File name="Input.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="267" topLine="0" />
+			<Cursor1 position="286" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

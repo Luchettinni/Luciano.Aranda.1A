@@ -71,7 +71,7 @@ void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[
             prest[indice2].codigoSocio = soc[indice].codigoDeSocio;
 
             prest[indice2].codigoLibro = opcion;
-            *codigoPrestamo = buscarultimoCodigoPrest(prest, tam4, codigoPrestamo);
+            *codigoPrestamo += 1;
             prest[indice2].isEmpty = 0;
             prest[indice2].codigo = *codigoPrestamo;
 
@@ -104,8 +104,7 @@ void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros 
 
                     if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[i].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                     {
-                        //printf("soc[%d].isEmpty = %d / prest[%d].isEmpty = %d / prest[%d].codigoEmpleado = %d / soc[%d].codigoDeSocio = %d\n\n", k, soc[k].isEmpty, j,prest[j].isEmpty,j, prest[j].codigoEmpleado, k, soc[k].codigoDeSocio);
-                        printf("%-04d                %-04d             %-15s               %-15s  %-35s  %-2.2d/%.2d/%.4d\n", prest[j].codigo, soc[k].codigoDeSocio, soc[k].nombre, soc[k].apellido, lib[i].titulo, prest[j].fecha.dia, prest[j].fecha.mes, prest[j].fecha.year);
+                        printf("%-.4d                %-.4d             %-15s               %-15s  %-35s  %-2.2d/%.2d/%.4d\n", prest[j].codigo, soc[k].codigoDeSocio, soc[k].nombre, soc[k].apellido, lib[i].titulo, prest[j].fecha.dia, prest[j].fecha.mes, prest[j].fecha.year);
                     }
                 }
             }
@@ -113,16 +112,18 @@ void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros 
     }
 }
 
-int buscarultimoCodigoPrest (sPrestamos prest[], int tam, int* codigoPrest)
+int buscarUltimoCodigoPrest (sPrestamos prest[], int tam)
 {
+    int codigoPrest = 0;
+
     for (int i = 0; i < tam; i++)
     {
-        if (prest[i].isEmpty == 0 && *codigoPrest < prest[i].codigo)
+        if (prest[i].isEmpty == 0 && codigoPrest < prest[i].codigo)
         {
-            *codigoPrest = prest[i].codigo;
+            codigoPrest = prest[i].codigo;
         }
     }
-    return *codigoPrest + 1;
+    return codigoPrest;
 }
 
 int buscarEspacioLibrePrestamos (sPrestamos prest[], int tam)

@@ -49,32 +49,27 @@ int main()
     sSocios socios[TAM_SOCIOS];
     sAutores autor[TAM_AUTORES];
     sLibros libros[TAM_LIBROS];
-    sPrestamos prestamo[TAM_PRESTAMOS] = {
-    {1,1,2,0, {8,6,2019} },
-    {2,2,2,0, {8,7,2019} },
-    {3,2,6,0, {7,5,2019} },
-    {5,2,2,0, {7,5,2019} }
-    };// dale, DALE, PONETE A HARDCODEAR, NUNCA VAS A ROMPER MI ABM *Risa de villano generica* (?
+    sPrestamos prestamo[TAM_PRESTAMOS];
+
 
     char confirma;
-    int confirma2;
-    int confirma3;
 
     int codigoSocio = 0;
-    int codigoPrestamoo = 0;
+    int codigoPrestamo = 0;
 
     inicializarEstructuras(socios, TAM_SOCIOS, prestamo, TAM_PRESTAMOS,libros,TAM_LIBROS,autor,TAM_AUTORES);
     hardcodeDeEstructuras(socios, autor , libros, prestamo );
 
-    buscarUltimoCodigoIncremental(socios,TAM_SOCIOS,&codigoSocio);
+    codigoSocio = buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio);
+    codigoPrestamo = buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS);
 
     do {
         system("cls");
+        confirma = '0';
         switch (menuDeOpciones())
         {
             case 1:
-                confirma2 = 0;
-                while (confirma2 != 5)
+                do
                 {
                     switch(menuDeSocios())
                     {
@@ -84,7 +79,7 @@ int main()
                             break;
 
                         case 2:
-                            if ( codigoSocio != 0 )
+                            if ( buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
                                 bajaSocio(socios, TAM_SOCIOS);
                             }
@@ -97,7 +92,7 @@ int main()
                             break;
 
                         case 3:
-                            if ( codigoSocio != 0 )
+                            if ( buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
                                 modificarSocio(socios, TAM_SOCIOS);
                             }
@@ -110,7 +105,7 @@ int main()
                             break;
 
                         case 4:
-                            if ( codigoSocio != 0 )
+                            if ( buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
                                ListarSocios(socios, TAM_AUTORES);
 
@@ -134,22 +129,23 @@ int main()
                             break;
 
                         case 7:
-                            if ( codigoSocio != 0 )
+                            if ( buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
-                                altaPrestamo(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS, &codigoPrestamoo);
+                                altaPrestamo(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS, &codigoPrestamo);
+                                ListarPrestamos(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
                             }
                             else
                             {
                                 printf("\n\nNo existen socios para hacer prestamos...\n\n");
                             }
-                            ListarPrestamos(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+
                             system("pause");
                             break;
 
                         case 8:
                             printf("volviendo...");
                             system("pause");
-                            confirma2 = 5;
+                            confirma = '1';
                             break;
 
                         default:
@@ -157,67 +153,135 @@ int main()
                             system("pause");
                             break;
                     }
-                }
+                } while (confirma != '1');
                 break;
 
             case 2:
-                confirma3 = 0;
-                while (confirma3 != 7)
+                do
                 {
                     switch(menuDeListado())
                     {
                         case 1:
-                            prestamosTotalesyDiarios (prestamo,TAM_PRESTAMOS);
+                            if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) )
+                            {
+                                prestamosTotalesyDiarios (prestamo,TAM_PRESTAMOS);
+                            }
+                            else
+                            {
+                                printf("\nNo se encontraron prestamos para realizar esta opcion... \n\n");
+                            }
+
                             system("pause");
                             break;
 
                         case 2:
-                            promedioNoSuperado(prestamo,TAM_PRESTAMOS);
+                            if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) )
+                            {
+                                promedioNoSuperado(prestamo,TAM_PRESTAMOS);
+                            }
+                            else
+                            {
+                                printf("\nNo se encontraron prestamos para realizar esta opcion... \n\n");
+                            }
+
                             system("pause");
                             break;
 
                         case 3:
-                            listarPorLibroDeterminado(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                            if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) )
+                            {
+                                listarPorLibroDeterminado(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                            }
+                            else
+                            {
+                                printf("\nNo se encontraron prestamos para realizar esta opcion... \n\n");
+                            }
+
                             system("pause");
                             break;
 
                         case 4:
-                            listarLibrosPorSocioDeterminado(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS, &codigoSocio);
+                            if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) || buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
+                            {
+                                listarLibrosPorSocioDeterminado(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS, &codigoSocio);
+                            }
+                            else
+                            {
+                                printf("\nNo se encontraron prestamos para realizar esta opcion... \n\n");
+                            }
+
                             system("pause");
                             break;
 
                         case 5:
-                            informarLibroMenosPrestado(libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                            if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) )
+                            {
+                                informarLibroMenosPrestado(libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                            }
+                            else
+                            {
+                                printf("\nNo se encontraron prestamos para realizar esta opcion... \n\n");
+                            }
                             system("pause");
                             break;
 
                         case 6:
-                            socioMenosPrestamos(socios,TAM_SOCIOS,prestamo,TAM_PRESTAMOS);
+                            if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) )
+                            {
+                                socioMenosPrestamos(socios,TAM_SOCIOS,prestamo,TAM_PRESTAMOS);
+                            }
+                            else
+                            {
+                                printf("\nNo se encontraron prestamos para realizar esta opcion... \n\n");
+                            }
                             system("pause");
                             break;
 
                         case 7:
-                            listarLibrosPorFechaDeterminada(libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                            if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) )
+                            {
+                                listarLibrosPorFechaDeterminada(libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                            }
+                            else
+                            {
+                                printf("\nNo se encontraron prestamos para realizar esta opcion... \n\n");
+                            }
+
                             system("pause");
                             break;
 
                         case 8:
-                            listarSociosPorFechaDeterminada(socios, TAM_SOCIOS,prestamo,TAM_PRESTAMOS);
+                            if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) || buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
+                            {
+                                listarSociosPorFechaDeterminada(socios, TAM_SOCIOS,prestamo,TAM_PRESTAMOS);
+                            }
+                            else
+                            {
+                                printf("\nNo se encontraron prestamos para realizar esta opcion... \n\n");
+                            }
                             system("pause");
                             break;
 
                         case 9:
-                            listarLibrosAscendente(libros,TAM_LIBROS);
+                            listarLibrosDecendente(libros,TAM_LIBROS);
                             system("pause");
                             break;
 
                         case 10:
-                            listarYOrdenarPorInsercion(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                            if ( buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
+                            {
+                                listarYOrdenarPorInsercion(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                            }
+                            else
+                            {
+                                printf("\nNo se encontraron socios para realizar esta opcion... \n\n");
+                            }
+
                             system("pause");
                             break;
 
                         case 11:
-                            confirma3 = 7;
+                            confirma = '2';
                             break;
 
                         case 12:
@@ -230,7 +294,7 @@ int main()
                             system("pause");
                             break;
                     }
-                }
+                } while (confirma != '2');
                 system("pause");
                 break;
 

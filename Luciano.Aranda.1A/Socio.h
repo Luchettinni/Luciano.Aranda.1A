@@ -184,7 +184,7 @@ int buscarSocio(sSocios soc[], int tam_Socios, int codigo);
  * \return retorna el ultimo codigo existente incrementado en uno
  *
  */
-int buscarUltimoCodigoIncremental (sSocios soc[], int tam_Socios, int* ultimoCodigo);
+int buscarUltimoCodigo (sSocios soc[], int tam_Socios, int ultimoCodigo);
 
 /** \brief muestra un pregunta o un mensaje y ofrece como opcion de respuesta (s/n)
  *
@@ -218,5 +218,5 @@ void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamos prest[], int
 void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, sPrestamos prest[], int tam3);
 void listarLibrosPorFechaDeterminada(sLibros lib[], int tam3, sPrestamos prest[], int tam2);
 void socioMenosPrestamos (sSocios soc[],int tam, sPrestamos prest[], int tam2);
-void listarLibrosAscendente(sLibros lib[], int tam_libros);
+void listarLibrosDecendente(sLibros lib[], int tam_libros);
 void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamos prest[], int tam2);
