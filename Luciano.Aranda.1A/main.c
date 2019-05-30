@@ -131,8 +131,8 @@ int main()
                         case 7:
                             if ( buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
-                                altaPrestamo(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS, &codigoPrestamo);
-                                ListarPrestamos(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                                altaPrestamo(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS, &codigoPrestamo);
+                                ListarPrestamos(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
                             }
                             else
                             {
@@ -190,7 +190,7 @@ int main()
                         case 3:
                             if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) )
                             {
-                                listarPorLibroDeterminado(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                                listarPorLibroDeterminado(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
                             }
                             else
                             {
@@ -203,7 +203,7 @@ int main()
                         case 4:
                             if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) || buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
-                                listarLibrosPorSocioDeterminado(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS, &codigoSocio);
+                                listarLibrosPorSocioDeterminado(socios, TAM_SOCIOS, libros, prestamo, TAM_PRESTAMOS, &codigoSocio);
                             }
                             else
                             {
@@ -270,7 +270,7 @@ int main()
                         case 10:
                             if ( buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
-                                listarYOrdenarPorInsercion(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                                listarYOrdenarPorInsercion(socios,TAM_SOCIOS);
                             }
                             else
                             {
@@ -285,7 +285,7 @@ int main()
                             break;
 
                         case 12:
-                            ListarPrestamos(socios,TAM_SOCIOS,autor,TAM_AUTORES,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
+                            ListarPrestamos(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
                             system("pause");
                             break;
 

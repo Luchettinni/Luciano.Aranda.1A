@@ -39,7 +39,7 @@
 
 //---------------------------------------------
 
-void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4, int* codigoPrestamo)
+void altaPrestamo(sSocios soc[], int tam_Socios, sLibros lib[], int tam_Libros, sPrestamos prest[], int tam_Prestamos, int* codigoPrestamo)
 {
     char respuesta;
     int opcion;
@@ -48,7 +48,7 @@ void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[
     int codigo;
     scanf("%d", &codigo);
 
-    int indice = buscarSocio(soc, tam, codigo);
+    int indice = buscarSocio(soc, tam_Socios, codigo);
 
     if (indice == -1)
     {
@@ -64,10 +64,10 @@ void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[
         {
             system("cls");
             printf("-----Administracion de prestamo de libros----- // SOCIOS // PRESTAMOS\n\n");
-            listarLibros(lib, tam3);
+            listarLibros(lib, tam_Libros);
             getInt(&opcion, "\n\nSeleccione un libro: ", "\nERROR: ese libro no existe...", 1,6);
 
-            int indice2 = buscarEspacioLibrePrestamos(prest, tam4);
+            int indice2 = buscarEspacioLibrePrestamos(prest, tam_Prestamos);
             prest[indice2].codigoSocio = soc[indice].codigoDeSocio;
 
             prest[indice2].codigoLibro = opcion;
@@ -89,19 +89,18 @@ void altaPrestamo(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[
     }
 }
 
-void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4)
+void ListarPrestamos (sSocios soc[], int tam_Socios, sLibros lib[], int tam_Libros, sPrestamos prest[], int tam_Prestamos)
 {
     printf("\nCodigo de prestamo  Codigo de socio  Nombre                        Apellido         Libro prestado                       D/MM/AAAA\n\n");
 
-    for( int i = 0; i < tam3; i++) // recorre los libros
+    for( int i = 0; i < tam_Libros; i++) // recorre los libros
     {
-        for( int j = 0; j < tam4; j++ ) // recorre los prestamos
+        for( int j = 0; j < tam_Prestamos; j++ ) // recorre los prestamos
         {
-            if( lib[i].codigoLibro == prest[j].codigoLibro )
+            if( lib[i].codigoLibro == prest[j].codigoLibro ) // si el libro de la iteracion aparece en un prestamo...
             {
-                for( int k = 0; k < tam; k++ ) // recorro los ...?
+                for( int k = 0; k < tam_Socios; k++ ) // recorro los socios para encontrar cuales socios pidieron ese libro
                 {
-
                     if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[i].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                     {
                         printf("%-.4d                %-.4d             %-15s               %-15s  %-35s  %-2.2d/%.2d/%.4d\n", prest[j].codigo, soc[k].codigoDeSocio, soc[k].nombre, soc[k].apellido, lib[i].titulo, prest[j].fecha.dia, prest[j].fecha.mes, prest[j].fecha.year);
@@ -112,11 +111,11 @@ void ListarPrestamos (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros 
     }
 }
 
-int buscarUltimoCodigoPrest (sPrestamos prest[], int tam)
+int buscarUltimoCodigoPrest (sPrestamos prest[], int tam_Prestamos)
 {
     int codigoPrest = 0;
 
-    for (int i = 0; i < tam; i++)
+    for (int i = 0; i < tam_Prestamos; i++)
     {
         if (prest[i].isEmpty == 0 && codigoPrest < prest[i].codigo)
         {
@@ -126,11 +125,11 @@ int buscarUltimoCodigoPrest (sPrestamos prest[], int tam)
     return codigoPrest;
 }
 
-int buscarEspacioLibrePrestamos (sPrestamos prest[], int tam)
+int buscarEspacioLibrePrestamos (sPrestamos prest[], int tam_Prestamos)
 {
     int indice = -1;
 
-    for (int i = 0; i < tam; i++)
+    for (int i = 0; i < tam_Prestamos; i++)
     {
         if (prest[i].isEmpty == 1)
         {

@@ -16,11 +16,12 @@
 * el nombre de la funcion de "ordenamiento decendente" esta como "ascendente" (FIXED)
 * Si hay CERO prestamos, el promedio diario da un numero sarasa (FIXED de una forma muy rancia jejex jejox)
 
+* en los comentarios, falta cambiar los parametros "tam" por su nombre mas descriptivo (FIXED)
+* hay algunas funciones que utilizan parametros inecesarios (FIXED) // grax brenda por hacermelo notar xd
 //---------------------------------------------------------------------------- ---TO DO/FIX LIST---
 
 * algunos textos del abm no tienen su espaciado correspondiente (NOT FIXED)
 * algunas opciones del abm entregan pausas inecesarias (NOT FIXED)
-* en los comentarios, falta cambiar los parametros "tam" por su nombre mas descriptivo (NOT FIXED)
 * faltan bibliotecas para todas las entidades (NOT FIXED)
 * faltan comentarios en algunas funciones (NOT FIXED)
 * falta distribuir las funciones a sus respectivas bibliotecas de sus respectivas entidades (NOT FIXED)

@@ -209,14 +209,14 @@ void listarAutores(sAutores aut[], int tam_Autores);
  *
  */
 
-void obtenerPrestTotalYDiario(sPrestamos prest[], int tam, float* contadorDePrestamos, int* contadorDias);
-void prestamosTotalesyDiarios (sPrestamos prest[], int tam);
-void promedioNoSuperado (sPrestamos prest[], int tam);
-void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4);
-void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4, int* ultimoCodigo);
-void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamos prest[], int tam3);
-void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, sPrestamos prest[], int tam3);
-void listarLibrosPorFechaDeterminada(sLibros lib[], int tam3, sPrestamos prest[], int tam2);
-void socioMenosPrestamos (sSocios soc[],int tam, sPrestamos prest[], int tam2);
+void obtenerPrestTotalYDiario(sPrestamos prest[], int tam_Prestamos, float* contadorDePrestamos, int* contadorDias);
+void prestamosTotalesyDiarios (sPrestamos prest[], int tam_Prestamos);
+void promedioNoSuperado (sPrestamos prest[], int tam_Prestamos);
+void listarPorLibroDeterminado(sSocios soc[], int tam_Socios, sLibros lib[], int tam_Libros, sPrestamos prest[], int tam_Prestamos);
+void listarLibrosPorSocioDeterminado (sSocios soc[], int tam_Socios, sLibros lib[], sPrestamos prest[], int tam_Prestamos, int* ultimoCodigo);
+void listarYOrdenarPorInsercion(sSocios soc[], int tam_Socios);
+void listarLibrosPorFechaDeterminada(sLibros lib[], int tam_Libros, sPrestamos prest[], int tam_Prestamos);
+void socioMenosPrestamos (sSocios soc[],int tam_Socios, sPrestamos prest[], int tam_Prestamos);
 void listarLibrosDecendente(sLibros lib[], int tam_libros);
-void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamos prest[], int tam2);
+void listarSociosPorFechaDeterminada(sSocios soc[], int tam_Socios, sPrestamos prest[], int tam_Prestamos);
+void informarLibroMenosPrestado (sLibros lib[],int tam_Libros, sPrestamos prest[], int tam_Prestamos);

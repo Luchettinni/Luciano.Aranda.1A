@@ -440,14 +440,9 @@ void listarAutores(sAutores aut[], int tam_Autores)
 
 //-------------------------------------------------------------------------
 
-/*
-tam_Socios
-tam_Prestamos
-tam_Libros
-tam_Autores
-*/
 
-void obtenerPrestTotalYDiario(sPrestamos prest[], int tam, float* contadorDePrestamos, int* contadorDias)
+
+void obtenerPrestTotalYDiario(sPrestamos prest[], int tam_Prestamos, float* contadorDePrestamos, int* contadorDias)
 {
     int contador;
     for (int i = 0; i < 12; i++) // recorro todos los meses de un año
@@ -455,7 +450,7 @@ void obtenerPrestTotalYDiario(sPrestamos prest[], int tam, float* contadorDePres
         for (int j = 0; j < 31; j++) // recorro los 31 dias de un mes
         {
             contador = 0;
-            for (int k = 0; k < tam; k++) // recorro los prestamos
+            for (int k = 0; k < tam_Prestamos; k++) // recorro los prestamos
             {
                 if (prest[k].fecha.dia == j+1 && prest[k].fecha.mes == i+1 && prest[k].isEmpty == 0 )
                 {
@@ -472,25 +467,25 @@ void obtenerPrestTotalYDiario(sPrestamos prest[], int tam, float* contadorDePres
     }
 }
 
-void prestamosTotalesyDiarios (sPrestamos prest[], int tam)
+void prestamosTotalesyDiarios (sPrestamos prest[], int tam_Prestamos)
 {
     float promedio = 0;
     int contadorDeDias = 0;
 
-    obtenerPrestTotalYDiario(prest,tam,&promedio,&contadorDeDias);
+    obtenerPrestTotalYDiario(prest,tam_Prestamos,&promedio,&contadorDeDias);
 
     printf("Prestamos totales = %.f \n", promedio);
     promedio = promedio / contadorDeDias;
     printf("Promedio diario = %.2f \n", promedio);
 }
 
-void promedioNoSuperado (sPrestamos prest[], int tam)
+void promedioNoSuperado (sPrestamos prest[], int tam_Prestamos)
 {
     int contador = 0;
     float promedio = 0;
     int contadorDias = 0;
 
-    obtenerPrestTotalYDiario(prest,tam,&promedio,&contadorDias);
+    obtenerPrestTotalYDiario(prest,tam_Prestamos,&promedio,&contadorDias);
     promedio = promedio / contadorDias;
     printf("(promedio diario: %.2f...)\n", promedio);
     contadorDias = 0;
@@ -501,7 +496,7 @@ void promedioNoSuperado (sPrestamos prest[], int tam)
         for (int j = 0; j < 31; j++) // recorro los dias de un mes
         {
             contador = 0;
-            for (int k = 0; k < tam; k++) // recorro los prestamos
+            for (int k = 0; k < tam_Prestamos; k++) // recorro los prestamos
             {
                 if (prest[k].fecha.dia == j+1 && prest[k].fecha.mes == i+1 && prest[k].isEmpty == 0 )
                 {
@@ -519,20 +514,20 @@ void promedioNoSuperado (sPrestamos prest[], int tam)
     printf("los dias que no superan al prestamo son: %d \n\n", contadorDias);
 }
 
-void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4)
+void listarPorLibroDeterminado(sSocios soc[], int tam_Socios, sLibros lib[], int tam_Libros, sPrestamos prest[], int tam_Prestamos)
 {
     int libro;
-    listarLibros(lib,tam3);
+    listarLibros(lib,tam_Libros);
     getInt(&libro, "\nIngrese el codigo del libro que desea mostrar: ", "\nERROR, ese libro no existe...", 1, 6);
 
     printf("\nCodigo de prestamo  Codigo de socio  Nombre           Apellido         Codigo de libro  D/MM/AAAA\n\n");
 
-    for( int j = 0; j < tam4; j++ ) // recorre los prestamos
+    for( int j = 0; j < tam_Prestamos; j++ ) // recorre los prestamos
     {
         //printf("%d prestcodigolibro %d\n", libro, prest[j].codigoLibro);
         if( libro == prest[j].codigoLibro )
         {
-            for( int k = 0; k < tam; k++ ) // recorro los socios
+            for( int k = 0; k < tam_Socios; k++ ) // recorro los socios
             {
                 if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[libro-1].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                 {
@@ -544,21 +539,21 @@ void listarPorLibroDeterminado(sSocios soc[], int tam, sAutores aut[], int tam2,
     }
 }
 
-void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], int tam2, sLibros lib[], int tam3, sPrestamos prest[], int tam4, int* ultimoCodigo)
+void listarLibrosPorSocioDeterminado (sSocios soc[], int tam_Socios, sLibros lib[], sPrestamos prest[], int tam_Prestamos, int* ultimoCodigo)
 {
     int socio;
 
-    ListarSocios(soc,tam);
+    ListarSocios(soc,tam_Socios);
     getInt(&socio, "\nIngrese el codigo del socio:  ", "\nERROR, ese socio no existe...", 1, *ultimoCodigo);
 
-    printf("\nCodigo de prestamo  Codigo de socio  Nombre           Apellido         Codigo de libro  D/MM/AAAA\n\n");
+    printf("\nCodigo de prestamo  Codigo de socio  Nombre           Apellido         Codigo de libro  Dia que realizo el prestamo (D/MM/AAAA)\n\n");
 
-    for( int j = 0; j < tam4; j++ ) // recorre los prestamos
+    for( int j = 0; j < tam_Prestamos; j++ ) // recorre los prestamos
     {
         //printf("%d prestcodigolibro %d\n", libro, prest[j].codigoLibro);
         if( socio == prest[j].codigoSocio ) // si el socio esta en un prestamo
         {
-            for( int k = 0; k < tam; k++ ) // recorro los socios
+            for( int k = 0; k < tam_Socios; k++ ) // recorro los socios
             {
                 if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[socio-1].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                 {
@@ -570,17 +565,17 @@ void listarLibrosPorSocioDeterminado (sSocios soc[], int tam, sAutores aut[], in
     }
 }
 
-void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamos prest[], int tam3)
+void informarLibroMenosPrestado (sLibros lib[],int tam_Libros, sPrestamos prest[], int tam_Prestamos)
 {
 
     int min = 0;
     int contador;
     int flag = 0;
 
-    for (int i = 0; i < tam2; i++) // recorro los libros
+    for (int i = 0; i < tam_Libros; i++) // recorro los libros
     {
         contador = 0;
-        for (int j = 0; j < tam3; j++) // recorro los prestamos por cada libro
+        for (int j = 0; j < tam_Prestamos; j++) // recorro los prestamos por cada libro
         {
             if ( lib[i].codigoLibro == prest[j].codigoLibro && prest[j].isEmpty == 0 && lib[i].isEmpty == 0 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
             {
@@ -601,10 +596,10 @@ void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamos prest[], int
     }
 
     printf("\nCodigo del autor  Codigo del libro  titulo del libro\n\n");
-    for ( int i = 0; i < tam2; i++ ) // este for, recorre nuevamente todo, comparando el minimo encontrado
+    for ( int i = 0; i < tam_Libros; i++ ) // este for, recorre nuevamente todo, comparando el minimo encontrado
     {
         contador = 0;
-        for ( int j = 0; j < tam3; j++ )
+        for ( int j = 0; j < tam_Prestamos; j++ )
         {
             if ( lib[i].codigoLibro == prest[j].codigoLibro && prest[j].isEmpty == 0 && lib[i].isEmpty == 0 ) // si encuentro uno de esos libros en el prestamo, verifico cuantos prestamos se hicieron para ese libro...
             {
@@ -618,11 +613,11 @@ void informarLibroMenosPrestado (sLibros lib[],int tam2, sPrestamos prest[], int
     }
 }
 
-void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, sPrestamos prest[], int tam3)
+void listarYOrdenarPorInsercion(sSocios soc[], int tam_Socios)
 {
-    sSocios auxSoc[tam];
+    sSocios auxSoc[tam_Socios];
     int j;
-    for (int i = 1; i < tam; i++)
+    for (int i = 1; i < tam_Socios; i++)
     {
         auxSoc[i] = soc[i];
         j = i - 1;
@@ -637,7 +632,7 @@ void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, 
 
     printf("\n  Codigo  Nombre           Apellido         Genero  Telefono          Email                            D/MM/AAAA\n\n");
 
-    for(int  j = 0; j < tam; j++ )
+    for(int  j = 0; j < tam_Socios; j++ )
     {
         if( soc[j].isEmpty == 0)
         {
@@ -646,7 +641,7 @@ void listarYOrdenarPorInsercion(sSocios soc[], int tam, sLibros lib[],int tam2, 
     }
 }
 
-void listarLibrosPorFechaDeterminada(sLibros lib[], int tam, sPrestamos prest[], int tam2)
+void listarLibrosPorFechaDeterminada(sLibros lib[], int tam_Libros, sPrestamos prest[], int tam_Prestamos)
 {
 
     sFecha fechaAux;
@@ -656,9 +651,9 @@ void listarLibrosPorFechaDeterminada(sLibros lib[], int tam, sPrestamos prest[],
 
     printf("\nCodigo del autor  Codigo del libro  titulo del libro\n\n");
 
-    for( int j = 0; j < tam; j++ ) // recorre los libros
+    for( int j = 0; j < tam_Libros; j++ ) // recorre los libros
     {
-        for( int k = 0; k < tam2; k++ ) // recorro los prestamos
+        for( int k = 0; k < tam_Prestamos; k++ ) // recorro los prestamos
         {
             if( fechaAux.dia == prest[k].fecha.dia && fechaAux.mes == prest[k].fecha.mes && fechaAux.year == prest[k].fecha.year)
             {
@@ -695,17 +690,17 @@ void listarLibrosDecendente(sLibros lib[], int tam_libros)
     listarLibros(lib,tam_libros);
 }
 
-void socioMenosPrestamos (sSocios soc[],int tam, sPrestamos prest[], int tam2)
+void socioMenosPrestamos (sSocios soc[],int tam_Socios, sPrestamos prest[], int tam_Prestamos)
 {
 
     int max = 0;
     int contador;
     int flag = 0;
 
-    for (int i = 0; i < tam; i++) // recorro los socios
+    for (int i = 0; i < tam_Socios; i++) // recorro los socios
     {
         contador = 0;
-        for (int j = 0; j < tam2; j++) // recorro los prestamos por cada socio
+        for (int j = 0; j < tam_Prestamos; j++) // recorro los prestamos por cada socio
         {
             if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 0 && soc[i].isEmpty == 0 ) // si ese socio realizo un prestamo, lo cuento
             {
@@ -726,10 +721,10 @@ void socioMenosPrestamos (sSocios soc[],int tam, sPrestamos prest[], int tam2)
     }
 
     printf("\nCodigo de socio   Nombre           Apellido         Codigo de libro\n\n");
-    for ( int i = 0; i < tam; i++ ) // este for, recorre nuevamente todo, comparando el minimo encontrado
+    for ( int i = 0; i < tam_Socios; i++ ) // este for, recorre nuevamente todo, comparando el minimo encontrado
     {
         contador = 0; // seteo la cantidad de prestamos en cero para este socio a recorrer
-        for ( int j = 0; j < tam2; j++ )
+        for ( int j = 0; j < tam_Prestamos; j++ )
         {
             if ( soc[i].codigoDeSocio == prest[j].codigoSocio && prest[j].isEmpty == 0 && soc[i].isEmpty == 0 )
             {
@@ -743,7 +738,7 @@ void socioMenosPrestamos (sSocios soc[],int tam, sPrestamos prest[], int tam2)
     }
 }
 
-void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamos prest[], int tam2)
+void listarSociosPorFechaDeterminada(sSocios soc[], int tam_Socios, sPrestamos prest[], int tam_Prestamos)
 {
     sFecha fechaAux;
     getInt(&fechaAux.dia, "Ingrese dia de ingreso: ", "ERROR: debe ser un numero entre 32 y 1. ", 1, 32);
@@ -752,9 +747,9 @@ void listarSociosPorFechaDeterminada(sSocios soc[], int tam, sPrestamos prest[],
 
     printf("\nCodigo de prestamo  Codigo de socio  Nombre           Apellido         Codigo de libro\n\n");
 
-    for( int j = 0; j < tam; j++ ) // recorre los soc
+    for( int j = 0; j < tam_Socios; j++ ) // recorre los soc
     {
-        for( int k = 0; k < tam2; k++ ) // recorro los prestamos
+        for( int k = 0; k < tam_Prestamos; k++ ) // recorro los prestamos
         {
             if( fechaAux.dia == prest[k].fecha.dia && fechaAux.mes == prest[k].fecha.mes && fechaAux.year == prest[k].fecha.year)
             {
