@@ -18,13 +18,17 @@
 
 * en los comentarios, falta cambiar los parametros "tam" por su nombre mas descriptivo (FIXED)
 * hay algunas funciones que utilizan parametros inecesarios (FIXED) // grax brenda por hacermelo notar xd
+* el listado de libros y autores no ordena (FIXED)
+* falta distribuir las funciones a sus respectivas bibliotecas de sus respectivas entidades (FIXED)
+* algunos textos del abm no tienen su espaciado correspondiente (FIXED)
+* algunas opciones del abm entregan pausas inecesarias (FIXED)
+* faltan bibliotecas para todas las entidades (FIXED)
+
 //---------------------------------------------------------------------------- ---TO DO/FIX LIST---
 
-* algunos textos del abm no tienen su espaciado correspondiente (NOT FIXED)
-* algunas opciones del abm entregan pausas inecesarias (NOT FIXED)
-* faltan bibliotecas para todas las entidades (NOT FIXED)
 * faltan comentarios en algunas funciones (NOT FIXED)
-* falta distribuir las funciones a sus respectivas bibliotecas de sus respectivas entidades (NOT FIXED)
+
+
 
 
 

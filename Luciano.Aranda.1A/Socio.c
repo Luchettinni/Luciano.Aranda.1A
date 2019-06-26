@@ -112,6 +112,8 @@ void hardcodeDeEstructuras(sSocios socios[], sAutores autores[], sLibros libros[
     }
 }
 
+//-------------------------------------------------------------------------
+
 int menuDeOpciones()
 {
     int opcion;
@@ -172,8 +174,8 @@ int menuDeListado()
 
 int subMenuModificarSocio()
 {
-    int opcion;
     system("cls");
+    int opcion;
     printf("-----Administracion de prestamo de libros----- // SOCIOS // MODIFICAR SOCIO");
     printf("\n1) Modificar apellido");
     printf("\n2) Modificar nombre");
@@ -187,6 +189,8 @@ int subMenuModificarSocio()
 
     return opcion;
 }
+
+//-------------------------------------------------------------------------
 
 void AltaSocio (sSocios soc[], int tam_Socios, int* UltimoCodigoDeSocio)
 {
@@ -261,6 +265,7 @@ void bajaSocio (sSocios soc[], int tam_Socios)
 
 void modificarSocio(sSocios soc[], int tam_Socios)
 {
+    int opcion = 0;
     int indice;
     char respuesta;
 
@@ -280,44 +285,49 @@ void modificarSocio(sSocios soc[], int tam_Socios)
 
         if (respuesta == 's')
         {
-            switch(subMenuModificarSocio())
+            do
             {
-                fflush(stdin);
-                char apellido[31];
-                char nombre[31];
-                char sexo;
-                char telefono[16];
-                char eMail[31];
+                switch(subMenuModificarSocio())
+                {
+                    fflush(stdin);
+                    char apellido[31];
+                    char nombre[31];
+                    char sexo;
+                    char telefono[16];
+                    char eMail[31];
 
-                case 1:
-                    getString(apellido, "Ingrese el apellido nuevo: ", "ERROR: apellido demasiado corto, o demasiado largo...", 2, 31);
-                    strcpy(soc[indice].apellido, apellido);
-                    break;
-                case 2:
-                    getString(nombre, "Ingrese el nombre nuevo: ", "ERROR: nombre demasiado corto, o demasiado largo...", 2, 31);
-                    strcpy(soc[indice].nombre, nombre);
-                    break;
-                case 3:
-                    getCharGenero(&sexo, "Ingrese el genero nuevo: ", "ERROR: genero invalido...", 'm', 'f');
-                    soc[indice].sexo = sexo;
-                    break;
-                case 4:
-                    getString(telefono, "ingrese el numero de telefono nuevo", "ERROR: el numero es muy largo o muy corto...", 8, 16);
-                    strcpy(soc[indice].telefono, telefono);
-                    break;
+                    case 1:
+                        getString(apellido, "Ingrese el apellido nuevo: ", "ERROR: apellido demasiado corto, o demasiado largo...", 2, 31);
+                        strcpy(soc[indice].apellido, apellido);
+                        break;
+                    case 2:
+                        getString(nombre, "Ingrese el nombre nuevo: ", "ERROR: nombre demasiado corto, o demasiado largo...", 2, 31);
+                        strcpy(soc[indice].nombre, nombre);
+                        break;
+                    case 3:
+                        getCharGenero(&sexo, "Ingrese el genero nuevo: ", "ERROR: genero invalido...", 'm', 'f');
+                        soc[indice].sexo = sexo;
+                        break;
+                    case 4:
+                        getString(telefono, "ingrese el numero de telefono nuevo", "ERROR: el numero es muy largo o muy corto...", 8, 16);
+                        strcpy(soc[indice].telefono, telefono);
+                        break;
 
-                case 5:
-                    getString(eMail, "Ingrese su Email: ", "ERROR: El Email es muy corto o es demasiado largo.", 13, 31);
-                    strcpy(soc[indice].eMail, eMail);
-                    break;
+                    case 5:
+                        getString(eMail, "Ingrese su Email: ", "ERROR: El Email es muy corto o es demasiado largo.", 13, 31);
+                        strcpy(soc[indice].eMail, eMail);
+                        break;
 
-                case 6:
-                    break;
+                    case 6:
+                        printf("\n");
+                        opcion = 1;
+                        break;
 
-                default:
-                    printf("comando desconocido...");
-                    break;
-            }
+                    default:
+                        printf("comando desconocido...");
+                        break;
+                }
+            } while (opcion != 1);
         }
         else
         {
@@ -334,8 +344,6 @@ void modificarSocio(sSocios soc[], int tam_Socios)
 void ListarSocios ( sSocios soc[], int tam_Socios)
 {
     printf("\n  Codigo  Nombre           Apellido         Genero  Telefono          Email                            D/MM/AAAA\n\n");
-
-    ordenarSocios(soc, tam_Socios);
 
     for(int  j = 0; j < tam_Socios; j++ )
     {
@@ -375,7 +383,6 @@ void ordenarSocios(sSocios soc[], int tam_Socios)
                 soc[i] = soc[j]; // empI ahora vale A
                 soc[j] = socAux; // empJ ahora vale B
             }
-
         }
     }
 }
@@ -426,21 +433,7 @@ int buscarUltimoCodigo (sSocios soc[], int tam_Socios, int ultimoCodigo)
     return ultimoCodigo;
 }
 
-void listarAutores(sAutores aut[], int tam_Autores)
-{
-    printf("\nCodigo del autor / nombre / apellido\n");
-    for (int i = 0; i < tam_Autores; i++)
-    {
-        if ( aut[i].isEmpty == 0)
-        {
-            printf("%d %s %s\n", aut[i].codigoDelAutor, aut[i].nombre, aut[i].apellido);
-        }
-    }
-}
-
 //-------------------------------------------------------------------------
-
-
 
 void obtenerPrestTotalYDiario(sPrestamos prest[], int tam_Prestamos, float* contadorDePrestamos, int* contadorDias)
 {
@@ -524,14 +517,12 @@ void listarPorLibroDeterminado(sSocios soc[], int tam_Socios, sLibros lib[], int
 
     for( int j = 0; j < tam_Prestamos; j++ ) // recorre los prestamos
     {
-        //printf("%d prestcodigolibro %d\n", libro, prest[j].codigoLibro);
-        if( libro == prest[j].codigoLibro )
+        if( prest[j].isEmpty == 0 && libro == prest[j].codigoLibro )
         {
             for( int k = 0; k < tam_Socios; k++ ) // recorro los socios
             {
-                if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[libro-1].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
+                if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                 {
-                    //printf("soc[%d].isEmpty = %d / prest[%d].isEmpty = %d / prest[%d].codigoEmpleado = %d / soc[%d].codigoDeSocio = %d\n\n", k, soc[k].isEmpty, j,prest[j].isEmpty,j, prest[j].codigoEmpleado, k, soc[k].codigoDeSocio);
                     printf("%-16d   %-16d  %-15s  %-15s  %-15d  %2.2d/%.2d/%.4d\n", prest[j].codigo, soc[k].codigoDeSocio, soc[k].nombre, soc[k].apellido, prest[j].codigoLibro, prest[j].fecha.dia, prest[j].fecha.mes, prest[j].fecha.year);
                 }
             }
@@ -539,7 +530,7 @@ void listarPorLibroDeterminado(sSocios soc[], int tam_Socios, sLibros lib[], int
     }
 }
 
-void listarLibrosPorSocioDeterminado (sSocios soc[], int tam_Socios, sLibros lib[], sPrestamos prest[], int tam_Prestamos, int* ultimoCodigo)
+void listarLibrosPorSocioDeterminado (sSocios soc[], int tam_Socios, sPrestamos prest[], int tam_Prestamos, int* ultimoCodigo)
 {
     int socio;
 
@@ -550,14 +541,12 @@ void listarLibrosPorSocioDeterminado (sSocios soc[], int tam_Socios, sLibros lib
 
     for( int j = 0; j < tam_Prestamos; j++ ) // recorre los prestamos
     {
-        //printf("%d prestcodigolibro %d\n", libro, prest[j].codigoLibro);
         if( socio == prest[j].codigoSocio ) // si el socio esta en un prestamo
         {
             for( int k = 0; k < tam_Socios; k++ ) // recorro los socios
             {
-                if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[socio-1].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
+                if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                 {
-                    //printf("soc[%d].isEmpty = %d / prest[%d].isEmpty = %d / prest[%d].codigoEmpleado = %d / soc[%d].codigoDeSocio = %d\n\n", k, soc[k].isEmpty, j,prest[j].isEmpty,j, prest[j].codigoEmpleado, k, soc[k].codigoDeSocio);
                     printf("%-16d   %-16d  %-15s  %-15s  %-15d  %2.2d/%.2d/%.4d\n", prest[j].codigo, soc[k].codigoDeSocio, soc[k].nombre, soc[k].apellido, prest[j].codigoLibro , prest[j].fecha.dia, prest[j].fecha.mes, prest[j].fecha.year);
                 }
             }
@@ -617,12 +606,13 @@ void listarYOrdenarPorInsercion(sSocios soc[], int tam_Socios)
 {
     sSocios auxSoc[tam_Socios];
     int j;
+
     for (int i = 1; i < tam_Socios; i++)
     {
         auxSoc[i] = soc[i];
         j = i - 1;
 
-        while ( j >= 0 && stricmp(soc[j].apellido, auxSoc[i].apellido ) > 0 )
+        while ( (j >= 0) && stricmp(soc[j].apellido, auxSoc[i].apellido ) > 0 )
         {
             soc[j + 1] = soc[j];
             j--;
@@ -630,15 +620,7 @@ void listarYOrdenarPorInsercion(sSocios soc[], int tam_Socios)
         soc[j + 1] = auxSoc[i];
     }
 
-    printf("\n  Codigo  Nombre           Apellido         Genero  Telefono          Email                            D/MM/AAAA\n\n");
-
-    for(int  j = 0; j < tam_Socios; j++ )
-    {
-        if( soc[j].isEmpty == 0)
-        {
-            printf("    %04d  %-15s  %-15s  %-6c  %-16s  %-31s  %2.2d/%.2d/%.4d\n", soc[j].codigoDeSocio, soc[j].nombre, soc[j].apellido, soc[j].sexo, soc[j].telefono, soc[j].eMail, soc[j].fecha.dia, soc[j].fecha.mes, soc[j].fecha.year);
-        }
-    }
+    ListarSocios(soc, tam_Socios);
 }
 
 void listarLibrosPorFechaDeterminada(sLibros lib[], int tam_Libros, sPrestamos prest[], int tam_Prestamos)

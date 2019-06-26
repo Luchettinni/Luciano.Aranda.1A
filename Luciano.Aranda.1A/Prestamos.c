@@ -1,16 +1,14 @@
+#ifndef PRESTAMOS_H_INCLUDED
+#define PRESTAMOS_H_INCLUDED
+
+#include "Prestamos.h"
+
+#endif // PRESTAMOS_H_INCLUDED
+
+//---------------------------------------------
+
 #include <stdio.h>
 #include <stdlib.h>
-
-//---------------------------------------------
-
-#ifndef SOCIO_H_INCLUDED
-#define SOCIO_H_INCLUDED
-
-#include "Socio.h"
-
-#endif // SOCIO_H_INCLUDED
-
-//---------------------------------------------
 
 #ifndef LIBROS_H_INCLUDED
 #define LIBROS_H_INCLUDED
@@ -21,12 +19,12 @@
 
 //---------------------------------------------
 
-#ifndef PRESTAMOS_H_INCLUDED
-#define PRESTAMOS_H_INCLUDED
+#ifndef SOCIO_H_INCLUDED
+#define SOCIO_H_INCLUDED
 
-#include "Prestamos.h"
+#include "Socio.h"
 
-#endif // PRESTAMOS_H_INCLUDED
+#endif // SOCIO_H_INCLUDED
 
 //---------------------------------------------
 

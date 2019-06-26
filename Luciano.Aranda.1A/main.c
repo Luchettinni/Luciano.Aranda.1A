@@ -8,7 +8,7 @@
 
 #include "Socio.h"
 
-#endif // SOCIO_H_INCLUDED}
+#endif // SOCIO_H_INCLUDED
 
 //---------------------------------------------
 
@@ -107,7 +107,8 @@ int main()
                         case 4:
                             if ( buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
-                               ListarSocios(socios, TAM_AUTORES);
+                                ordenarSocios(socios, TAM_AUTORES);
+                                ListarSocios(socios, TAM_AUTORES);
 
                             }
                             else
@@ -119,12 +120,15 @@ int main()
                             break;
 
                         case 5:
+                            ordenarLibros(libros,TAM_LIBROS);
                             listarLibros(libros, TAM_LIBROS);
+
                             system("pause");
                             break;
 
                         case 6:
                             listarAutores(autor, TAM_AUTORES);
+                            ordenarAutores(autor, TAM_AUTORES);
                             system("pause");
                             break;
 
@@ -203,7 +207,7 @@ int main()
                         case 4:
                             if ( buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS) || buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
-                                listarLibrosPorSocioDeterminado(socios, TAM_SOCIOS, libros, prestamo, TAM_PRESTAMOS, &codigoSocio);
+                                listarLibrosPorSocioDeterminado(socios, TAM_SOCIOS, prestamo, TAM_PRESTAMOS, &codigoSocio);
                             }
                             else
                             {
@@ -284,10 +288,10 @@ int main()
                             confirma = '2';
                             break;
 
-                        case 12:
+                        /*case 12:
                             ListarPrestamos(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
                             system("pause");
-                            break;
+                            break;*/
 
                         default:
                             printf("\nEl comando ingresado es desconocido...\n\n");

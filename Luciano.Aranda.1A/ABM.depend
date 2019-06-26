@@ -262,3 +262,61 @@
 
 1558842484 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\libros.h
 
+1558847265 source:d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"Input.h"
+
+1558315858 d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\input.h
+
+1561529608 source:d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\libros.c
+	<stdio.h>
+	"string.h"
+	"Socio.h"
+	"Libros.h"
+
+1561530432 d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\socio.h
+	"Libros.h"
+	"Autores.h"
+
+1561527415 d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\libros.h
+
+1561529699 source:d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Socio.h"
+	"Prestamos.h"
+	"Libros.h"
+	"Input.h"
+
+1561527642 d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\prestamos.h
+	"Socio.h"
+
+1561524138 source:d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\prestamos.c
+	"Prestamos.h"
+	<stdio.h>
+	<stdlib.h>
+	"Libros.h"
+	"Socio.h"
+	"Input.h"
+
+1561530109 source:d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\socio.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Socio.h"
+	"Libros.h"
+	"Input.h"
+
+1561529644 source:d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\autores.c
+	<stdio.h>
+	"string.h"
+	"Autores.h"
+
+1561527416 d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\autores.h
+

@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Autores.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Autores.h" />
 		<Unit filename="Input.c">
 			<Option compilerVar="CC" />
 		</Unit>

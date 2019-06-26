@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "string.h"
 
 //---------------------------------------------
 
@@ -20,6 +21,25 @@
 
 //---------------------------------------------
 
+void ordenarLibros(sLibros lib[], int tam_libros)
+{
+    sLibros libAux;
+
+    for ( int i = 0; i < tam_libros; i++ )
+    {
+        for (int j = i+1; j < tam_libros; j++ )
+        {
+            if( stricmp(lib[i].titulo, lib[j].titulo) > 0)
+            {
+                libAux = lib[i]; //socAux ahora vale B
+                lib[i] = lib[j]; // empI ahora vale A
+                lib[j] = libAux; // empJ ahora vale B
+            }
+        }
+    }
+}
+
+
 void listarLibros(sLibros lib[], int tam_Libros)
 {
     printf("\nCodigo del autor  Codigo del libro  titulo del libro\n\n");
@@ -32,3 +52,4 @@ void listarLibros(sLibros lib[], int tam_Libros)
         }
     }
 }
+
