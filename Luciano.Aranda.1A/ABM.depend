@@ -214,7 +214,7 @@
 	"Socio.h"
 	"Input.h"
 
-1558847265 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\input.c
+1561670167 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\input.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -222,45 +222,46 @@
 	<conio.h>
 	"Input.h"
 
-1558315858 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\input.h
+1561670167 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\input.h
 
-1559173284 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\prestamos.c
+1561673658 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\prestamos.c
 	<stdio.h>
 	<stdlib.h>
-	"Socio.h"
-	"Libros.h"
 	"Prestamos.h"
 	"Input.h"
 
-1559171714 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\socio.h
+1561673766 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\socio.h
+	"Autores.h"
 
-1559173284 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\prestamos.h
+1561673777 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\prestamos.h
 	"Socio.h"
+	"Libros.h"
 
-1559172079 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\socio.c
+1561672665 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\socio.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<ctype.h>
 	<string.h>
 	"Socio.h"
-	"Libros.h"
+	"Prestamos.h"
 	"Input.h"
 
-1559173325 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\main.c
+1561674030 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Socio.h"
 	"Prestamos.h"
 	"Libros.h"
+	"Informes.h"
 	"Input.h"
 
-1558845801 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\libros.c
+1561673852 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\libros.c
 	<stdio.h>
-	"Socio.h"
+	"string.h"
 	"Libros.h"
 
-1558842484 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\libros.h
+1561673303 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\libros.h
 
 1558847265 source:d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\input.c
 	<stdio.h>
@@ -319,4 +320,23 @@
 	"Autores.h"
 
 1561527416 d:\2 -cosas personales\tp ruben sempai\utn\primer cuatrimestre\nada que ver\luciano.aranda.1a\luciano.aranda.1a\autores.h
+
+1561673850 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\autores.c
+	<stdio.h>
+	"string.h"
+	"Autores.h"
+
+1561673236 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\autores.h
+
+1561673113 source:c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\informes.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"Informes.h"
+	"Input.h"
+
+1561673879 c:\users\apyr\desktop\luciano.aranda.1a\luciano.aranda.1a\informes.h
+	"Socio.h"
+	"Prestamos.h"
+	"Libros.h"
 

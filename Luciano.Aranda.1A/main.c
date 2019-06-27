@@ -30,6 +30,15 @@
 
 //---------------------------------------------
 
+#ifndef INFORMES_H_INCLUDED
+#define INFORMES_H_INCLUDED
+
+#include "Informes.h"
+
+#endif // INFORMES_H_INCLUDED
+
+//---------------------------------------------
+
 #ifndef INPUT_H_INCLUDED
 #define INPUT_H_INCLUDED
 
@@ -57,8 +66,15 @@ int main()
     int codigoSocio = 0;
     int codigoPrestamo = 0;
 
-    inicializarEstructuras(socios, TAM_SOCIOS, prestamo, TAM_PRESTAMOS,libros,TAM_LIBROS,autor,TAM_AUTORES);
-    hardcodeDeEstructuras(socios, autor , libros, prestamo );
+    inicializarEstructuraSocios(socios, TAM_SOCIOS);
+    inicializarEstructuraPrestamos(prestamo, TAM_PRESTAMOS);
+    inicializarEstructuraLibros(libros,TAM_LIBROS);
+    inicializarEstructuraAutores(autor,TAM_AUTORES);
+
+    hardcodeDeEstructuraSocios(socios);
+    hardcodeDeEstructuraPrestamos(prestamo);
+    hardcodeDeEstructuraLibros(libros);
+    hardcodeDeEstructuraAutores(autor);
 
     codigoSocio = buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio);
     codigoPrestamo = buscarUltimoCodigoPrest(prestamo, TAM_PRESTAMOS);
@@ -147,7 +163,7 @@ int main()
                             break;
 
                         case 8:
-                            printf("volviendo...");
+                            printf("\nvolviendo... \n\n");
                             system("pause");
                             confirma = '1';
                             break;
@@ -285,6 +301,7 @@ int main()
                             break;
 
                         case 11:
+                            printf("\nVolviendo... \n\n");
                             confirma = '2';
                             break;
 

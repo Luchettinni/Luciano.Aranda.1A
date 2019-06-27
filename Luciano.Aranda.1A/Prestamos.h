@@ -1,9 +1,51 @@
+//---------------------------------------------
+
 #ifndef SOCIO_H_INCLUDED
 #define SOCIO_H_INCLUDED
 
 #include "Socio.h"
 
 #endif // SOCIO_H_INCLUDED
+
+//---------------------------------------------
+
+#ifndef LIBROS_H_INCLUDED
+#define LIBROS_H_INCLUDED
+
+#include "Libros.h"
+
+#endif // LIBROS_H_INCLUDED
+
+//---------------------------------------------
+
+typedef struct // Prestamos
+{
+    int codigo;
+    int codigoSocio;
+    int codigoLibro;
+    int isEmpty;
+    sFecha fecha;
+
+} sPrestamos;
+
+
+
+/** \brief "Inicializa" una estructura de prestamos, rellenandola con sus campos "isEmpty" en 1.
+ *
+ * \param prest[] es la estructura de tipo "sPrestamos" a rellenar con unos en su campo isEmpty.
+ * \param tam_Prestamos es el tamaño de la estructura "sPrestamos".
+ * \return void
+ *
+ */
+void inicializarEstructuraPrestamos(sPrestamos prest[], int tam_Prestamos);
+
+/** \brief Realiza el hardcodeo de una estructura de prestamos
+ *
+ * \param prest[] es la estructura a inicializar.
+ * \return void
+ *
+ */
+void hardcodeDeEstructuraPrestamos(sPrestamos prest[]);
 
 /** \brief Da de alta un prestamo
  *

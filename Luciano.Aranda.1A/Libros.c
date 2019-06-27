@@ -3,15 +3,6 @@
 
 //---------------------------------------------
 
-#ifndef SOCIO_H_INCLUDED
-#define SOCIO_H_INCLUDED
-
-#include "Socio.h"
-
-#endif // SOCIO_H_INCLUDED
-
-//---------------------------------------------
-
 #ifndef LIBROS_H_INCLUDED
 #define LIBROS_H_INCLUDED
 
@@ -20,6 +11,36 @@
 #endif // LIBROS_H_INCLUDED
 
 //---------------------------------------------
+
+void inicializarEstructuraLibros(sLibros lib[],int tam_Libros)
+{
+    int i;
+
+    for( i=0; i< tam_Libros; i++)
+    {
+        lib[i].isEmpty = 1;
+    }
+
+}
+
+void hardcodeDeEstructuraLibros( sLibros libros[] )
+{
+    int i;
+
+    sLibros librosAux[] = {
+    { 0,1,1, "Peter y sus notas veganas"},
+    { 0,4,4, "Ricardo milanga: dota2"},
+    { 0,4,3, "Programacion en C para profesionales"},
+    { 0,3,5, "Los errores de C mas comunes"},
+    { 0,4,6, "AYUDA NO ME COMPILA, parte 1"},
+    { 0,3,2, "The work of a genius"}
+    };
+
+    for (i = 0; i < 6; i++)
+    {
+        libros[i] = librosAux[i];
+    }
+}
 
 void ordenarLibros(sLibros lib[], int tam_libros)
 {

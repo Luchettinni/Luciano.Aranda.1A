@@ -1,30 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #ifndef PRESTAMOS_H_INCLUDED
 #define PRESTAMOS_H_INCLUDED
 
 #include "Prestamos.h"
 
 #endif // PRESTAMOS_H_INCLUDED
-
-//---------------------------------------------
-
-#include <stdio.h>
-#include <stdlib.h>
-
-#ifndef LIBROS_H_INCLUDED
-#define LIBROS_H_INCLUDED
-
-#include "Libros.h"
-
-#endif // LIBROS_H_INCLUDED
-
-//---------------------------------------------
-
-#ifndef SOCIO_H_INCLUDED
-#define SOCIO_H_INCLUDED
-
-#include "Socio.h"
-
-#endif // SOCIO_H_INCLUDED
 
 //---------------------------------------------
 
@@ -36,6 +18,37 @@
 #endif // INPUT_H_INCLUDED
 
 //---------------------------------------------
+
+void inicializarEstructuraPrestamos(sPrestamos prest[], int tam_Prestamos)
+{
+    int i;
+
+    for( i = 0; i < tam_Prestamos; i++)
+    {
+        prest[i].isEmpty = 1;
+    }
+
+}
+
+void hardcodeDeEstructuraPrestamos(sPrestamos prest[])
+{
+    int i;
+
+    sPrestamos prestAux [] = {
+    {1,1,2,0, {8,6,2019} },
+    {1,1,2,0, {8,6,2019} },
+    {2,4,2,0, {8,7,2019} },
+    {3,4,6,0, {7,5,2019} },
+    {5,4,2,0, {7,5,2019} }
+    };
+
+    for (i = 0; i < 5; i++)
+    {
+        prest[i] = prestAux[i];
+    }
+}
+
+//-------------------------------------------------------------------------
 
 void altaPrestamo(sSocios soc[], int tam_Socios, sLibros lib[], int tam_Libros, sPrestamos prest[], int tam_Prestamos, int* codigoPrestamo)
 {

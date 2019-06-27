@@ -12,6 +12,34 @@
 
 //---------------------------------------------
 
+void inicializarEstructuraAutores(sAutores aut[], int tam_Autores)
+{
+    int i;
+
+    for( i=0; i< tam_Autores; i++)
+    {
+        aut[i].isEmpty = 1;
+    }
+
+}
+
+void hardcodeDeEstructuraAutores( sAutores autores[] )
+{
+    int i;
+
+    sAutores autoresAux[] = {
+    {0,1, "Peter", "Ahumada"},
+    {0,2, "Thomas", "Alvarez"},
+    {0,3, "Ricardo", "Milos"},
+    {0,4, "Christian", "Bauss"}
+    };
+
+    for (i = 0; i < 4; i++)
+    {
+        autores[i] = autoresAux[i];
+    }
+}
+
 void ordenarAutores(sAutores aut[], int tam_Autores)
 {
     sAutores autAux;

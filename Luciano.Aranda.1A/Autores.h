@@ -7,6 +7,23 @@ typedef struct // Autores
 
 } sAutores;
 
+/** \brief "Inicializa" una estructura de autores, rellenandola con sus campos "isEmpty" en 1.
+ *
+ * \param aut[] es la estructura de tipo "sAutores" a rellenar con unos en su campo isEmpty.
+ * \param tam_Autores es el tamaño de la estructura "sAutores".
+ * \return void
+ *
+ */
+void inicializarEstructuraAutores(sAutores aut[], int tam_Autores);
+
+/** \brief Realiza el hardcodeo de una estructura de autores
+ *
+ * \param autores[] es la estructura a inicializar.
+ * \return void
+ *
+ */
+void hardcodeDeEstructuraAutores( sAutores autores[] );
+
 /** \brief muestra en pantalla un listado con los autores de los libros y su codigo de autor
  *
  * \param aut[] es la estructura que contiene los autores a listar
