@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Autores.h" />
+		<Unit filename="Informes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Informes.h" />
 		<Unit filename="Input.c">
 			<Option compilerVar="CC" />
 		</Unit>
