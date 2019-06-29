@@ -293,9 +293,10 @@ void modificarSocio(sSocios soc[], int tam_Socios)
 
 void ListarSocios ( sSocios soc[], int tam_Socios)
 {
+    int j;
     printf("\n  Codigo  Nombre           Apellido         Genero  Telefono          Email                            D/MM/AAAA\n\n");
 
-    for(int  j = 0; j < tam_Socios; j++ )
+    for( j = 0; j < tam_Socios; j++ )
     {
         if( soc[j].isEmpty == 0)
         {
@@ -314,11 +315,13 @@ void mostrarSocio (sSocios soc[], int i)
 
 void ordenarSocios(sSocios soc[], int tam_Socios)
 {
+    int i;
+    int j;
     sSocios socAux;
 
-    for ( int i = 0; i < tam_Socios; i++ )
+    for ( i = 0; i < tam_Socios; i++ )
     {
-        for (int j = i+1; j < tam_Socios; j++ )
+        for ( j = i+1; j < tam_Socios; j++ )
         {
             if( stricmp(soc[i].apellido, soc[j].apellido) > 0)
             {
@@ -339,9 +342,10 @@ void ordenarSocios(sSocios soc[], int tam_Socios)
 
 int buscarEspacioLibreSocios (sSocios soc[], int tam_Socios)
 {
+    int i;
     int indice = -1;
 
-    for (int i = 0; i < tam_Socios; i++)
+    for ( i = 0; i < tam_Socios; i++ )
     {
         if (soc[i].isEmpty == 1)
         {
@@ -354,9 +358,10 @@ int buscarEspacioLibreSocios (sSocios soc[], int tam_Socios)
 
 int buscarSocio(sSocios soc[], int tam_Socios, int codigo)
 {
+    int i;
     int indice = -1;
 
-    for ( int i = 0; i < tam_Socios; i++)
+    for ( i = 0; i < tam_Socios; i++ )
     {
         if ( soc[i].codigoDeSocio == codigo && soc[i].isEmpty == 0 )
         {
@@ -369,9 +374,10 @@ int buscarSocio(sSocios soc[], int tam_Socios, int codigo)
 
 int buscarUltimoCodigo (sSocios soc[], int tam_Socios, int ultimoCodigo)
 {
+    int i;
     ultimoCodigo = 0;
 
-    for (int i = 0; i < tam_Socios; i++)
+    for ( i = 0; i < tam_Socios; i++ )
     {
         if (soc[i].isEmpty == 0 && ultimoCodigo < soc[i].codigoDeSocio)
         {

@@ -45,10 +45,12 @@ void hardcodeDeEstructuraLibros( sLibros libros[] )
 void ordenarLibros(sLibros lib[], int tam_libros)
 {
     sLibros libAux;
+    int i;
+    int j;
 
-    for ( int i = 0; i < tam_libros; i++ )
+    for ( i = 0; i < tam_libros; i++ )
     {
-        for (int j = i+1; j < tam_libros; j++ )
+        for ( j = i+1; j < tam_libros; j++ )
         {
             if( stricmp(lib[i].titulo, lib[j].titulo) > 0)
             {
@@ -63,9 +65,10 @@ void ordenarLibros(sLibros lib[], int tam_libros)
 
 void listarLibros(sLibros lib[], int tam_Libros)
 {
+    int  j;
     printf("\nCodigo del autor  Codigo del libro  titulo del libro\n\n");
 
-    for(int  j = 0; j < tam_Libros; j++ )
+    for( j = 0; j < tam_Libros; j++ )
     {
         if(lib[j].isEmpty == 0)
         {

@@ -102,15 +102,19 @@ void altaPrestamo(sSocios soc[], int tam_Socios, sLibros lib[], int tam_Libros, 
 
 void ListarPrestamos (sSocios soc[], int tam_Socios, sLibros lib[], int tam_Libros, sPrestamos prest[], int tam_Prestamos)
 {
+    int i;
+    int j;
+    int k;
+
     printf("\nCodigo de prestamo  Codigo de socio  Nombre                        Apellido         Libro prestado                       D/MM/AAAA\n\n");
 
-    for( int i = 0; i < tam_Libros; i++) // recorre los libros
+    for(  i = 0; i < tam_Libros; i++) // recorre los libros
     {
-        for( int j = 0; j < tam_Prestamos; j++ ) // recorre los prestamos
+        for( j = 0; j < tam_Prestamos; j++ ) // recorre los prestamos
         {
             if( lib[i].codigoLibro == prest[j].codigoLibro ) // si el libro de la iteracion aparece en un prestamo...
             {
-                for( int k = 0; k < tam_Socios; k++ ) // recorro los socios para encontrar cuales socios pidieron ese libro
+                for( k = 0; k < tam_Socios; k++ ) // recorro los socios para encontrar cuales socios pidieron ese libro
                 {
                     if( soc[k].isEmpty == 0 && prest[j].isEmpty == 0 && lib[i].isEmpty == 0 && prest[j].codigoSocio == soc[k].codigoDeSocio )
                     {
@@ -124,9 +128,10 @@ void ListarPrestamos (sSocios soc[], int tam_Socios, sLibros lib[], int tam_Libr
 
 int buscarUltimoCodigoPrest (sPrestamos prest[], int tam_Prestamos)
 {
+    int i;
     int codigoPrest = 0;
 
-    for (int i = 0; i < tam_Prestamos; i++)
+    for (i = 0; i < tam_Prestamos; i++)
     {
         if (prest[i].isEmpty == 0 && codigoPrest < prest[i].codigo)
         {
@@ -138,9 +143,10 @@ int buscarUltimoCodigoPrest (sPrestamos prest[], int tam_Prestamos)
 
 int buscarEspacioLibrePrestamos (sPrestamos prest[], int tam_Prestamos)
 {
+    int i;
     int indice = -1;
 
-    for (int i = 0; i < tam_Prestamos; i++)
+    for ( i = 0; i < tam_Prestamos; i++)
     {
         if (prest[i].isEmpty == 1)
         {

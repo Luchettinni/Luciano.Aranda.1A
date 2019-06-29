@@ -151,6 +151,7 @@ int main()
                         case 7:
                             if ( buscarUltimoCodigo(socios,TAM_SOCIOS,codigoSocio) )
                             {
+                                ordenarLibros(libros, TAM_LIBROS);
                                 altaPrestamo(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS, &codigoPrestamo);
                                 ListarPrestamos(socios,TAM_SOCIOS,libros,TAM_LIBROS,prestamo,TAM_PRESTAMOS);
                             }

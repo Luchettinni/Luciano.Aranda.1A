@@ -42,11 +42,13 @@ void hardcodeDeEstructuraAutores( sAutores autores[] )
 
 void ordenarAutores(sAutores aut[], int tam_Autores)
 {
+    int i;
+    int j;
     sAutores autAux;
 
-    for ( int i = 0; i < tam_Autores; i++ )
+    for ( i = 0; i < tam_Autores; i++ )
     {
-        for (int j = i+1; j < tam_Autores; j++ )
+        for ( j = i+1; j < tam_Autores; j++ )
         {
             if( stricmp(aut[i].apellido, aut[j].apellido) > 0)
             {
@@ -67,9 +69,10 @@ void ordenarAutores(sAutores aut[], int tam_Autores)
 
 void listarAutores(sAutores aut[], int tam_Autores)
 {
+    int i;
     printf("\nCodigo del autor / nombre / apellido\n");
 
-    for (int i = 0; i < tam_Autores; i++)
+    for ( i = 0; i < tam_Autores; i++ )
     {
         if ( aut[i].isEmpty == 0)
         {
