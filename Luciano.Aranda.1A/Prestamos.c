@@ -36,7 +36,7 @@ void hardcodeDeEstructuraPrestamos(sPrestamos prest[])
 
     sPrestamos prestAux [] = {
     {1,1,2,0, {8,6,2019} },
-    {1,1,2,0, {8,6,2019} },
+    {4,1,2,0, {8,6,2019} },
     {2,4,2,0, {8,7,2019} },
     {3,4,6,0, {7,5,2019} },
     {5,4,2,0, {7,5,2019} }
